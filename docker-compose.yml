@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  fund-monitor:
+    build: .
+    container_name: fund-monitor
+    restart: unless-stopped
+    ports:
+      - "8787:8787"
+    environment:
+      - TZ=Asia/Shanghai
+      - FUND_MONITOR_WEBUI_PORT=8787
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./config:/app/config

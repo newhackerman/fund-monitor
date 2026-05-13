@@ -1,0 +1,127 @@
+# 第二版优化策略配置 - 基于探索结果自动应用
+# 最佳策略: ma_pullback (胜率97.8%, 总收益46.72%)
+
+monitor:
+  interval: 60
+  fast_mode: false
+  max_retries: 3
+  retry_delay: 1
+  warmup_on_start: true
+  warmup_periods_1m: 240
+  market_hours:
+    start: 09:30
+    end: '15:00'
+    noon_break:
+      start: '11:30'
+      end: '13:00'
+
+indicators:
+  macd:
+    fast: 12
+    slow: 26
+    signal: 9
+  rsi:
+    period: 14
+  atr:
+    period: 14
+
+signals:
+  cooldown_minutes: 30  # 缩短冷却时间，增加交易机会
+  max_new_buys_per_cycle: 6  # 增加每周期最大买入数
+  buy:
+    mode: breakout_pullback_plus_continuation
+    allowed_sessions:
+    - start: 09:40
+      end: '10:40'
+    - start: '13:05'
+      end: '14:08'
+    disable_new_buy_after: '14:08'
+    
+    # === 第二版优化参数 (基于 ma_pullback 最佳表现) ===
+    # RSI 参数 - 提高胜率
+    trend_rsi_min: 56  # 略降，扩大范围
+    trend_rsi_max: 78  # 略升，扩大范围
+    max_rsi_for_entry: 70  # 略升
+    
+    # MA 趋势参数 - 强化 ma_pullback 策略
+    require_ma_uptrend: true
+    min_ma5_rise_pct: 0.008  # 降低要求，增加机会
+    min_ma10_rise_pct: 0.003  # 降低要求
+    
+    # 突破参数
+    min_breakout_strength_pct: 0.15  # 降低突破要求
+    breakout_min_pct: 0.15
+    breakout_lookback_minutes: 20  # 延长突破回溯
+    
+    # 回踩参数 - 核心优化
+    min_volume_ratio: 0.95
+    max_pullback_pct: 0.40  # 扩大回踩范围
+    pullback_min_pct: 0.02  # 降低最小回踩
+    pullback_max_pct: 0.50  # 扩大最大回踩
+    require_first_pullback: true
+    
+    # 延续入场参数
+    allow_continuation_entry: true
+    continuation_min_breakout_persistence_pct: 0.015  # 降低要求
+    continuation_min_rebound_strength_pct: 0.15  # 降低要求
+    continuation_max_ma5_gap_pct: 0.25
+    continuation_min_volume_ratio: 0.98
+    continuation_max_rsi: 68
+    
+    # 回补入场参数
+    allow_reclaim_entry: true
+    reclaim_min_rsi: 52
+    reclaim_max_rsi: 68
+    reclaim_min_volume_ratio: 1.0
+    reclaim_min_pullback_pct: 0.08
+    reclaim_max_pullback_pct: 0.40
+    reclaim_min_rebound_strength_pct: 0.12
+    
+    # 尾盘强势入场参数
+    allow_late_strong_entry: true
+    late_allowed_session:
+      start: '14:08'
+      end: '14:30'
+    late_min_rsi: 62
+    late_max_rsi: 80
+    late_min_volume_ratio: 1.02
+    late_min_breakout_strength_pct: 0.18
+    late_min_breakout_persistence_pct: 0.03
+    late_min_rebound_strength_pct: 0.30
+    late_max_ma5_gap_pct: 0.25
+
+  sell:
+    require_open_position: true
+    take_profit_pct: 5.0
+    stop_loss_pct: 0.65
+    trailing_drawdown_pct: 0.9
+    max_hold_minutes: 15
+    stale_exit_minutes: 10
+    stale_exit_max_profit_pct: 0.25
+    stale_exit_profit_ceiling_pct: 0.05
+    allow_overnight: false
+
+  atr:
+    period: 14
+    stop_loss_multiplier: 1.5
+    take_profit_multiplier: 2.6
+    min_stop_loss_pct: 0.55
+    max_stop_loss_pct: 0.95
+    enable_trailing_take_profit: true
+    trailing_buffer_multiplier: 0.8
+
+# === 探索程序配置 ===
+exploration:
+  enabled: true
+  interval_minutes: 10  # 每10分钟探索一次
+  collect_data_minutes: 15  # 数据收集窗口延长到15分钟
+  strategies_to_test:
+    - rsi_low_vol_breakout
+    - ma_pullback
+    - ma_support
+    - vol_surge_price_stable
+    - rsi_divergence
+  threshold:
+    min_signals: 2
+    min_win_rate: 0.50
+    min_total_profit: 0.02

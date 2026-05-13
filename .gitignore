@@ -1,0 +1,25 @@
+# Runtime data (generated at runtime, not part of the skill)
+data/minute_cache/
+data/minute_cache_quality/
+data/monitor.pid
+data/signals.json
+data/trades.json
+data/stats_snapshot.json
+data/monitor_heartbeat.json
+
+# Logs (runtime output)
+logs/
+
+# Python virtual environment
+venv/
+__pycache__/
+*.pyc
+
+# Temporary files
+*.swp
+*.swo
+.DS_Store
+AUTO_EXPLORATION_RUNNING
+
+# Windows temp
+*.tmp

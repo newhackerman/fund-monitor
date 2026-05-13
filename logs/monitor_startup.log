@@ -1,0 +1,456 @@
+2026-03-31 16:08:26 | selftest startup log entry
+2026-03-31 21:12:47 | cmd_start_bg entered
+2026-03-31 21:12:47 | launcher_pid=1908 cmd=['/usr/bin/python3', '/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-03-31 21:12:47 | cmd_start_bg cwd=/home/node/.openclaw/workspace/skills/fund-monitor stdout_log=/home/node/.openclaw/workspace/skills/fund-monitor/logs/monitor_stdout.log
+2026-03-31 21:12:47 | cmd_start entered
+2026-03-31 21:12:47 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-03-31 21:12:47 | about to create BackgroundScheduler daemon=False
+2026-03-31 21:12:47 | scheduler.start() ok
+2026-03-31 21:12:47 | save_pid ok pid=1908 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-03-31 21:12:47 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-03-31 21:12:47 | scheduler started pid=1908 skip_warmup=True
+2026-03-31 21:12:47 | enter _main_loop
+2026-03-31 21:12:52 | cmd_start finally shutdown_requested=True monitoring=False
+2026-04-01 08:22:22 | cmd_start_bg entered
+2026-04-01 08:22:22 | launcher_pid=812 cmd=['/usr/bin/python3', '/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-01 08:22:22 | cmd_start_bg cwd=/home/node/.openclaw/workspace/skills/fund-monitor stdout_log=/home/node/.openclaw/workspace/skills/fund-monitor/logs/monitor_stdout.log
+2026-04-01 08:22:23 | cmd_start entered
+2026-04-01 08:22:23 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-01 08:22:23 | about to create BackgroundScheduler daemon=False
+2026-04-01 08:22:23 | scheduler.start() ok
+2026-04-01 08:22:23 | save_pid ok pid=812 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-01 08:22:23 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-01 08:22:23 | scheduler started pid=812 skip_warmup=True
+2026-04-01 08:22:23 | enter _main_loop
+2026-04-02 08:10:01 | cmd_start entered
+2026-04-02 08:10:01 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start']
+2026-04-02 08:10:05 | about to create BackgroundScheduler daemon=False
+2026-04-02 08:10:05 | scheduler.start() ok
+2026-04-02 08:10:05 | save_pid ok pid=540 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-02 08:10:05 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-02 08:10:05 | scheduler started pid=540 skip_warmup=False
+2026-04-02 08:10:05 | enter _main_loop
+2026-04-02 08:10:20 | cmd_start finally shutdown_requested=True monitoring=False
+2026-04-02 08:11:30 | cmd_start entered
+2026-04-02 08:11:30 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start']
+2026-04-02 08:11:35 | about to create BackgroundScheduler daemon=False
+2026-04-02 08:11:35 | scheduler.start() ok
+2026-04-02 08:11:35 | save_pid ok pid=589 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-02 08:11:35 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-02 08:11:35 | scheduler started pid=589 skip_warmup=False
+2026-04-02 08:11:35 | enter _main_loop
+2026-04-08 09:28:13 | cmd_start_bg entered
+2026-04-08 09:28:13 | launcher_pid=70775 cmd=['/usr/bin/python3', '/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-08 09:28:13 | cmd_start_bg cwd=/home/node/.openclaw/workspace/skills/fund-monitor stdout_log=/home/node/.openclaw/workspace/skills/fund-monitor/logs/monitor_stdout.log
+2026-04-08 09:28:13 | cmd_start entered
+2026-04-08 09:28:13 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-08 09:28:13 | about to create BackgroundScheduler daemon=False
+2026-04-08 09:28:13 | scheduler.start() ok
+2026-04-08 09:28:13 | save_pid ok pid=70775 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-08 09:28:13 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-08 09:28:13 | scheduler started pid=70775 skip_warmup=True
+2026-04-08 09:28:13 | enter _main_loop
+2026-04-08 11:56:21 | cmd_start_bg entered
+2026-04-08 11:56:21 | launcher_pid=1724 cmd=['/usr/bin/python3', '/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-08 11:56:21 | cmd_start_bg cwd=/home/node/.openclaw/workspace/skills/fund-monitor stdout_log=/home/node/.openclaw/workspace/skills/fund-monitor/logs/monitor_stdout.log
+2026-04-08 11:56:21 | cmd_start entered
+2026-04-08 11:56:21 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-08 11:56:21 | about to create BackgroundScheduler daemon=False
+2026-04-08 11:56:21 | scheduler.start() ok
+2026-04-08 11:56:21 | save_pid ok pid=1724 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-08 11:56:21 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-08 11:56:21 | scheduler started pid=1724 skip_warmup=True
+2026-04-08 11:56:21 | enter _main_loop
+2026-04-13 14:30:21 | cmd_start_bg entered
+2026-04-13 14:30:21 | launcher_pid=55061 cmd=['/home/node/.openclaw/workspace/miniforge/envs/akenv/bin/python', '/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-13 14:30:21 | cmd_start_bg cwd=/home/node/.openclaw/workspace/skills/fund-monitor stdout_log=/home/node/.openclaw/workspace/skills/fund-monitor/logs/monitor_stdout.log
+2026-04-13 14:30:21 | cmd_start entered
+2026-04-13 14:30:21 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-13 14:30:21 | about to create BackgroundScheduler daemon=False
+2026-04-13 14:30:21 | scheduler.start() ok
+2026-04-13 14:30:21 | save_pid ok pid=55061 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-13 14:30:21 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-13 14:30:21 | scheduler started pid=55061 skip_warmup=True
+2026-04-13 14:30:21 | enter _main_loop
+2026-04-24 18:53:22 | cmd_start entered
+2026-04-24 18:53:22 | argv=['tools/monitor.py', 'start', '--skip-warmup']
+2026-04-24 18:53:22 | about to create BackgroundScheduler daemon=False
+2026-04-24 18:53:22 | scheduler.start() ok
+2026-04-24 18:53:22 | save_pid ok pid=88018 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-24 18:53:22 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-24 18:53:22 | scheduler started pid=88018 skip_warmup=True
+2026-04-24 18:53:22 | enter _main_loop
+2026-04-24 19:23:21 | cmd_start finally shutdown_requested=True monitoring=False
+2026-04-24 19:23:36 | cmd_start_bg entered
+2026-04-24 19:23:36 | launcher_pid=88949 cmd=['/usr/bin/python3', '/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-24 19:23:36 | cmd_start_bg cwd=/home/node/.openclaw/workspace/skills/fund-monitor stdout_log=/home/node/.openclaw/workspace/skills/fund-monitor/logs/monitor_stdout.log
+2026-04-24 19:23:37 | cmd_start entered
+2026-04-24 19:23:37 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-24 19:23:37 | about to create BackgroundScheduler daemon=False
+2026-04-24 19:23:37 | scheduler.start() ok
+2026-04-24 19:23:37 | save_pid ok pid=88949 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-24 19:23:37 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-24 19:23:37 | scheduler started pid=88949 skip_warmup=True
+2026-04-24 19:23:37 | enter _main_loop
+2026-04-24 21:11:06 | cmd_start_bg entered
+2026-04-24 21:11:06 | launcher_pid=762 cmd=['/usr/bin/python3', '/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-24 21:11:06 | cmd_start_bg cwd=/home/node/.openclaw/workspace/skills/fund-monitor stdout_log=/home/node/.openclaw/workspace/skills/fund-monitor/logs/monitor_stdout.log
+2026-04-24 21:11:06 | cmd_start entered
+2026-04-24 21:11:06 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-24 21:11:06 | about to create BackgroundScheduler daemon=False
+2026-04-24 21:11:06 | scheduler.start() ok
+2026-04-24 21:11:06 | save_pid ok pid=762 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-24 21:11:06 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-24 21:11:06 | scheduler started pid=762 skip_warmup=True
+2026-04-24 21:11:06 | enter _main_loop
+2026-04-26 10:40:52 | cmd_start_bg entered
+2026-04-26 10:40:52 | launcher_pid=56972 cmd=['/usr/bin/python3', '/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-26 10:40:52 | cmd_start_bg cwd=/home/node/.openclaw/workspace/skills/fund-monitor stdout_log=/home/node/.openclaw/workspace/skills/fund-monitor/logs/monitor_stdout.log
+2026-04-26 10:40:52 | cmd_start entered
+2026-04-26 10:40:52 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-26 10:40:52 | about to create BackgroundScheduler daemon=False
+2026-04-26 10:40:52 | scheduler.start() ok
+2026-04-26 10:40:52 | save_pid ok pid=56972 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-26 10:40:52 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-26 10:40:52 | scheduler started pid=56972 skip_warmup=True
+2026-04-26 10:40:52 | enter _main_loop
+2026-04-26 13:00:17 | cmd_start finally shutdown_requested=True monitoring=False
+2026-04-27 18:32:19 | cmd_start entered
+2026-04-27 18:32:19 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start']
+2026-04-27 18:32:19 | about to create BackgroundScheduler daemon=False
+2026-04-27 18:32:19 | scheduler.start() ok
+2026-04-27 18:32:19 | save_pid ok pid=39728 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-27 18:32:19 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-27 18:32:19 | scheduler started pid=39728 skip_warmup=False
+2026-04-27 18:32:19 | enter _main_loop
+2026-04-27 19:02:18 | cmd_start finally shutdown_requested=True monitoring=False
+2026-04-28 08:40:21 | cmd_start_bg entered
+2026-04-28 08:40:21 | launcher_pid=65976 cmd=['/usr/bin/python3', '/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-28 08:40:21 | cmd_start_bg cwd=/home/node/.openclaw/workspace/skills/fund-monitor stdout_log=/home/node/.openclaw/workspace/skills/fund-monitor/logs/monitor_stdout.log
+2026-04-28 08:40:22 | cmd_start entered
+2026-04-28 08:40:22 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-28 08:40:22 | about to create BackgroundScheduler daemon=False
+2026-04-28 08:40:22 | scheduler.start() ok
+2026-04-28 08:40:22 | save_pid ok pid=65976 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-28 08:40:22 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-28 08:40:22 | scheduler started pid=65976 skip_warmup=True
+2026-04-28 08:40:22 | enter _main_loop
+2026-04-28 08:43:47 | cmd_start finally shutdown_requested=True monitoring=False
+2026-04-28 08:44:08 | cmd_start entered
+2026-04-28 08:44:08 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start']
+2026-04-28 08:44:08 | about to create BackgroundScheduler daemon=False
+2026-04-28 08:44:08 | scheduler.start() ok
+2026-04-28 08:44:08 | save_pid ok pid=66172 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-28 08:44:08 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-28 08:44:08 | scheduler started pid=66172 skip_warmup=False
+2026-04-28 08:44:08 | enter _main_loop
+2026-04-28 09:14:06 | cmd_start finally shutdown_requested=True monitoring=False
+2026-04-28 09:14:18 | cmd_start_bg entered
+2026-04-28 09:14:18 | launcher_pid=67095 cmd=['/usr/bin/python3', '/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-28 09:14:18 | cmd_start_bg cwd=/home/node/.openclaw/workspace/skills/fund-monitor stdout_log=/home/node/.openclaw/workspace/skills/fund-monitor/logs/monitor_stdout.log
+2026-04-28 09:14:18 | cmd_start entered
+2026-04-28 09:14:18 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-28 09:14:18 | about to create BackgroundScheduler daemon=False
+2026-04-28 09:14:18 | scheduler.start() ok
+2026-04-28 09:14:18 | save_pid ok pid=67095 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-28 09:14:18 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-28 09:14:18 | scheduler started pid=67095 skip_warmup=True
+2026-04-28 09:14:18 | enter _main_loop
+2026-04-28 09:16:30 | cmd_start finally shutdown_requested=True monitoring=False
+2026-04-28 13:12:12 | cmd_start_bg entered
+2026-04-28 13:12:12 | launcher_pid=74547 cmd=['/usr/bin/python3', '/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-28 13:12:12 | cmd_start_bg cwd=/home/node/.openclaw/workspace/skills/fund-monitor stdout_log=/home/node/.openclaw/workspace/skills/fund-monitor/logs/monitor_stdout.log
+2026-04-28 13:12:13 | cmd_start entered
+2026-04-28 13:12:13 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-28 13:12:13 | about to create BackgroundScheduler daemon=False
+2026-04-28 13:12:13 | scheduler.start() ok
+2026-04-28 13:12:13 | save_pid ok pid=74547 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-28 13:12:13 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-28 13:12:13 | scheduler started pid=74547 skip_warmup=True
+2026-04-28 13:12:13 | enter _main_loop
+2026-04-28 13:13:49 | cmd_start finally shutdown_requested=True monitoring=False
+2026-04-28 13:14:03 | cmd_start entered
+2026-04-28 13:14:03 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start']
+2026-04-28 13:14:03 | about to create BackgroundScheduler daemon=False
+2026-04-28 13:14:03 | scheduler.start() ok
+2026-04-28 13:14:03 | save_pid ok pid=74639 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-28 13:14:03 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-28 13:14:03 | scheduler started pid=74639 skip_warmup=False
+2026-04-28 13:14:03 | enter _main_loop
+2026-04-28 13:44:03 | cmd_start finally shutdown_requested=True monitoring=False
+2026-04-28 13:44:36 | cmd_start_bg entered
+2026-04-28 13:44:36 | launcher_pid=76025 cmd=['/usr/bin/python3', '/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-28 13:44:36 | cmd_start_bg cwd=/home/node/.openclaw/workspace/skills/fund-monitor stdout_log=/home/node/.openclaw/workspace/skills/fund-monitor/logs/monitor_stdout.log
+2026-04-28 13:44:37 | cmd_start entered
+2026-04-28 13:44:37 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-28 13:44:37 | about to create BackgroundScheduler daemon=False
+2026-04-28 13:44:37 | scheduler.start() ok
+2026-04-28 13:44:37 | save_pid ok pid=76025 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-28 13:44:37 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-28 13:44:37 | scheduler started pid=76025 skip_warmup=True
+2026-04-28 13:44:37 | enter _main_loop
+2026-04-28 13:46:10 | cmd_start finally shutdown_requested=True monitoring=False
+2026-04-28 13:46:24 | cmd_start entered
+2026-04-28 13:46:24 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start']
+2026-04-28 13:46:25 | about to create BackgroundScheduler daemon=False
+2026-04-28 13:46:25 | scheduler.start() ok
+2026-04-28 13:46:25 | save_pid ok pid=76117 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-28 13:46:25 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-28 13:46:25 | scheduler started pid=76117 skip_warmup=False
+2026-04-28 13:46:25 | enter _main_loop
+2026-04-28 14:16:24 | cmd_start finally shutdown_requested=True monitoring=False
+2026-04-28 14:17:20 | cmd_start_bg entered
+2026-04-28 14:17:20 | launcher_pid=77099 cmd=['/usr/bin/python3', '/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-28 14:17:20 | cmd_start_bg cwd=/home/node/.openclaw/workspace/skills/fund-monitor stdout_log=/home/node/.openclaw/workspace/skills/fund-monitor/logs/monitor_stdout.log
+2026-04-28 14:17:20 | cmd_start entered
+2026-04-28 14:17:20 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-28 14:17:20 | about to create BackgroundScheduler daemon=False
+2026-04-28 14:17:20 | scheduler.start() ok
+2026-04-28 14:17:20 | save_pid ok pid=77099 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-28 14:17:20 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-28 14:17:20 | scheduler started pid=77099 skip_warmup=True
+2026-04-28 14:17:20 | enter _main_loop
+2026-04-28 14:19:27 | cmd_start finally shutdown_requested=True monitoring=False
+2026-04-28 14:19:42 | cmd_start entered
+2026-04-28 14:19:42 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start']
+2026-04-28 14:19:42 | about to create BackgroundScheduler daemon=False
+2026-04-28 14:19:42 | scheduler.start() ok
+2026-04-28 14:19:42 | save_pid ok pid=77203 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-28 14:19:42 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-28 14:19:42 | scheduler started pid=77203 skip_warmup=False
+2026-04-28 14:19:42 | enter _main_loop
+2026-04-28 14:49:41 | cmd_start finally shutdown_requested=True monitoring=False
+2026-04-28 14:50:25 | cmd_start_bg entered
+2026-04-28 14:50:25 | launcher_pid=78193 cmd=['/usr/bin/python3', '/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-28 14:50:25 | cmd_start_bg cwd=/home/node/.openclaw/workspace/skills/fund-monitor stdout_log=/home/node/.openclaw/workspace/skills/fund-monitor/logs/monitor_stdout.log
+2026-04-28 14:50:25 | cmd_start entered
+2026-04-28 14:50:25 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-28 14:50:25 | about to create BackgroundScheduler daemon=False
+2026-04-28 14:50:25 | scheduler.start() ok
+2026-04-28 14:50:25 | save_pid ok pid=78193 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-28 14:50:25 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-28 14:50:25 | scheduler started pid=78193 skip_warmup=True
+2026-04-28 14:50:25 | enter _main_loop
+2026-04-28 20:02:42 | cmd_start finally shutdown_requested=True monitoring=False
+2026-04-28 20:02:53 | cmd_start entered
+2026-04-28 20:02:53 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start']
+2026-04-28 20:02:54 | about to create BackgroundScheduler daemon=False
+2026-04-28 20:02:54 | scheduler.start() ok
+2026-04-28 20:02:54 | save_pid ok pid=87773 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-28 20:02:54 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-28 20:02:54 | scheduler started pid=87773 skip_warmup=False
+2026-04-28 20:02:54 | enter _main_loop
+2026-04-28 20:32:53 | cmd_start finally shutdown_requested=True monitoring=False
+2026-04-28 20:33:25 | cmd_start_bg entered
+2026-04-28 20:33:25 | launcher_pid=88724 cmd=['/usr/bin/python3', '/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-28 20:33:25 | cmd_start_bg cwd=/home/node/.openclaw/workspace/skills/fund-monitor stdout_log=/home/node/.openclaw/workspace/skills/fund-monitor/logs/monitor_stdout.log
+2026-04-28 20:33:25 | cmd_start entered
+2026-04-28 20:33:25 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-28 20:33:25 | about to create BackgroundScheduler daemon=False
+2026-04-28 20:33:25 | scheduler.start() ok
+2026-04-28 20:33:25 | save_pid ok pid=88724 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-28 20:33:25 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-28 20:33:25 | scheduler started pid=88724 skip_warmup=True
+2026-04-28 20:33:25 | enter _main_loop
+2026-04-28 20:35:41 | cmd_start finally shutdown_requested=True monitoring=False
+2026-04-28 20:35:55 | cmd_start entered
+2026-04-28 20:35:55 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start']
+2026-04-28 20:35:55 | about to create BackgroundScheduler daemon=False
+2026-04-28 20:35:55 | scheduler.start() ok
+2026-04-28 20:35:55 | save_pid ok pid=88838 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-28 20:35:55 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-28 20:35:55 | scheduler started pid=88838 skip_warmup=False
+2026-04-28 20:35:55 | enter _main_loop
+2026-04-28 21:05:54 | cmd_start finally shutdown_requested=True monitoring=False
+2026-04-28 21:06:36 | cmd_start_bg entered
+2026-04-28 21:06:36 | launcher_pid=89793 cmd=['/usr/bin/python3', '/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-28 21:06:36 | cmd_start_bg cwd=/home/node/.openclaw/workspace/skills/fund-monitor stdout_log=/home/node/.openclaw/workspace/skills/fund-monitor/logs/monitor_stdout.log
+2026-04-28 21:06:37 | cmd_start entered
+2026-04-28 21:06:37 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-28 21:06:37 | about to create BackgroundScheduler daemon=False
+2026-04-28 21:06:37 | scheduler.start() ok
+2026-04-28 21:06:37 | save_pid ok pid=89793 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-28 21:06:37 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-28 21:06:37 | scheduler started pid=89793 skip_warmup=True
+2026-04-28 21:06:37 | enter _main_loop
+2026-04-28 21:08:56 | cmd_start finally shutdown_requested=True monitoring=False
+2026-04-28 21:09:10 | cmd_start entered
+2026-04-28 21:09:10 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start']
+2026-04-28 21:09:11 | about to create BackgroundScheduler daemon=False
+2026-04-28 21:09:11 | scheduler.start() ok
+2026-04-28 21:09:11 | save_pid ok pid=89908 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-28 21:09:11 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-28 21:09:11 | scheduler started pid=89908 skip_warmup=False
+2026-04-28 21:09:11 | enter _main_loop
+2026-04-28 21:39:10 | cmd_start finally shutdown_requested=True monitoring=False
+2026-04-28 21:40:13 | cmd_start_bg entered
+2026-04-28 21:40:13 | launcher_pid=91064 cmd=['/usr/bin/python3', '/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-28 21:40:13 | cmd_start_bg cwd=/home/node/.openclaw/workspace/skills/fund-monitor stdout_log=/home/node/.openclaw/workspace/skills/fund-monitor/logs/monitor_stdout.log
+2026-04-28 21:40:14 | cmd_start entered
+2026-04-28 21:40:14 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-04-28 21:40:14 | about to create BackgroundScheduler daemon=False
+2026-04-28 21:40:14 | scheduler.start() ok
+2026-04-28 21:40:14 | save_pid ok pid=91064 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-04-28 21:40:14 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-04-28 21:40:14 | scheduler started pid=91064 skip_warmup=True
+2026-04-28 21:40:14 | enter _main_loop
+2026-05-01 09:25:39 | cmd_start entered
+2026-05-01 09:25:39 | argv=['tools/monitor.py', 'start']
+2026-05-01 09:25:39 | about to create BackgroundScheduler daemon=False
+2026-05-01 09:25:39 | scheduler.start() ok
+2026-05-01 09:25:39 | save_pid ok pid=441 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-05-01 09:25:39 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-05-01 09:25:39 | scheduler started pid=441 skip_warmup=False
+2026-05-01 09:25:39 | enter _main_loop
+2026-05-01 09:55:38 | cmd_start finally shutdown_requested=True monitoring=False
+2026-05-01 09:55:56 | cmd_start entered
+2026-05-01 09:55:56 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start']
+2026-05-01 09:55:56 | about to create BackgroundScheduler daemon=False
+2026-05-01 09:55:56 | scheduler.start() ok
+2026-05-01 09:55:56 | save_pid ok pid=1422 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-05-01 09:55:56 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-05-01 09:55:56 | scheduler started pid=1422 skip_warmup=False
+2026-05-01 09:55:56 | enter _main_loop
+2026-05-03 18:02:06 | cmd_start_bg entered
+2026-05-03 18:02:06 | launcher_pid=669 cmd=['/usr/bin/python3', '/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-05-03 18:02:06 | cmd_start_bg cwd=/home/node/.openclaw/workspace/skills/fund-monitor stdout_log=/home/node/.openclaw/workspace/skills/fund-monitor/logs/monitor_stdout.log
+2026-05-03 18:02:07 | cmd_start entered
+2026-05-03 18:02:07 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-05-03 18:02:07 | about to create BackgroundScheduler daemon=False
+2026-05-03 18:02:07 | scheduler.start() ok
+2026-05-03 18:02:07 | save_pid ok pid=669 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-05-03 18:02:07 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-05-03 18:02:07 | scheduler started pid=669 skip_warmup=True
+2026-05-03 18:02:07 | enter _main_loop
+2026-05-07 09:06:06 | cmd_start_bg entered
+2026-05-07 09:06:06 | launcher_pid=385 cmd=['/usr/bin/python3', '/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-05-07 09:06:06 | cmd_start_bg cwd=/home/node/.openclaw/workspace/skills/fund-monitor stdout_log=/home/node/.openclaw/workspace/skills/fund-monitor/logs/monitor_stdout.log
+2026-05-07 09:06:06 | cmd_start entered
+2026-05-07 09:06:06 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-05-07 09:06:06 | about to create BackgroundScheduler daemon=False
+2026-05-07 09:06:06 | scheduler.start() ok
+2026-05-07 09:06:06 | save_pid ok pid=385 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-05-07 09:06:06 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-05-07 09:06:06 | scheduler started pid=385 skip_warmup=True
+2026-05-07 09:06:06 | enter _main_loop
+2026-05-08 09:21:36 | cmd_start entered
+2026-05-08 09:21:36 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start']
+2026-05-08 09:21:36 | about to create BackgroundScheduler daemon=False
+2026-05-08 09:21:36 | scheduler.start() ok
+2026-05-08 09:21:36 | save_pid ok pid=158 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-05-08 09:21:36 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-05-08 09:21:36 | scheduler started pid=158 skip_warmup=False
+2026-05-08 09:21:36 | enter _main_loop
+2026-05-08 09:51:35 | cmd_start finally shutdown_requested=True monitoring=False
+2026-05-08 09:51:48 | cmd_start entered
+2026-05-08 09:51:48 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start']
+2026-05-08 09:51:49 | about to create BackgroundScheduler daemon=False
+2026-05-08 09:51:49 | scheduler.start() ok
+2026-05-08 09:51:49 | save_pid ok pid=992 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-05-08 09:51:49 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-05-08 09:51:49 | scheduler started pid=992 skip_warmup=False
+2026-05-08 09:51:49 | enter _main_loop
+2026-05-08 09:52:42 | cmd_start finally shutdown_requested=True monitoring=False
+2026-05-08 09:52:45 | cmd_start entered
+2026-05-08 09:52:45 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start']
+2026-05-08 09:52:45 | about to create BackgroundScheduler daemon=False
+2026-05-08 09:52:45 | scheduler.start() ok
+2026-05-08 09:52:45 | save_pid ok pid=1038 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-05-08 09:52:45 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-05-08 09:52:45 | scheduler started pid=1038 skip_warmup=False
+2026-05-08 09:52:45 | enter _main_loop
+2026-05-08 10:02:50 | cmd_start finally shutdown_requested=True monitoring=False
+2026-05-08 10:02:59 | cmd_start entered
+2026-05-08 10:02:59 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start']
+2026-05-08 10:02:59 | about to create BackgroundScheduler daemon=False
+2026-05-08 10:02:59 | scheduler.start() ok
+2026-05-08 10:02:59 | save_pid ok pid=1338 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-05-08 10:02:59 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-05-08 10:02:59 | scheduler started pid=1338 skip_warmup=False
+2026-05-08 10:02:59 | enter _main_loop
+2026-05-08 10:13:04 | cmd_start finally shutdown_requested=True monitoring=False
+2026-05-08 10:13:12 | cmd_start entered
+2026-05-08 10:13:12 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start']
+2026-05-08 10:13:13 | about to create BackgroundScheduler daemon=False
+2026-05-08 10:13:13 | scheduler.start() ok
+2026-05-08 10:13:13 | save_pid ok pid=1608 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-05-08 10:13:13 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-05-08 10:13:13 | scheduler started pid=1608 skip_warmup=False
+2026-05-08 10:13:13 | enter _main_loop
+2026-05-09 12:48:37 | cmd_start_bg entered
+2026-05-09 12:48:37 | launcher_pid=899 cmd=['/usr/bin/python3', '/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-05-09 12:48:37 | cmd_start_bg cwd=/home/node/.openclaw/workspace/skills/fund-monitor stdout_log=/home/node/.openclaw/workspace/skills/fund-monitor/logs/monitor_stdout.log
+2026-05-09 12:48:38 | cmd_start entered
+2026-05-09 12:48:38 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-05-09 12:48:38 | about to create BackgroundScheduler daemon=False
+2026-05-09 12:48:38 | scheduler.start() ok
+2026-05-09 12:48:38 | save_pid ok pid=899 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-05-09 12:48:38 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-05-09 12:48:38 | scheduler started pid=899 skip_warmup=True
+2026-05-09 12:48:38 | enter _main_loop
+2026-05-09 12:49:03 | cmd_start finally shutdown_requested=True monitoring=False
+2026-05-09 12:49:07 | cmd_start entered
+2026-05-09 12:49:07 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start']
+2026-05-09 12:49:07 | about to create BackgroundScheduler daemon=False
+2026-05-09 12:49:07 | scheduler.start() ok
+2026-05-09 12:49:07 | save_pid ok pid=919 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-05-09 12:49:07 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-05-09 12:49:07 | scheduler started pid=919 skip_warmup=False
+2026-05-09 12:49:07 | enter _main_loop
+2026-05-09 12:59:12 | cmd_start finally shutdown_requested=True monitoring=False
+2026-05-09 12:59:21 | cmd_start entered
+2026-05-09 12:59:21 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start']
+2026-05-09 12:59:21 | about to create BackgroundScheduler daemon=False
+2026-05-09 12:59:21 | scheduler.start() ok
+2026-05-09 12:59:21 | save_pid ok pid=1214 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-05-09 12:59:21 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-05-09 12:59:21 | scheduler started pid=1214 skip_warmup=False
+2026-05-09 12:59:21 | enter _main_loop
+2026-05-09 13:09:26 | cmd_start finally shutdown_requested=True monitoring=False
+2026-05-09 13:09:34 | cmd_start entered
+2026-05-09 13:09:34 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start']
+2026-05-09 13:09:34 | about to create BackgroundScheduler daemon=False
+2026-05-09 13:09:34 | scheduler.start() ok
+2026-05-09 13:09:34 | save_pid ok pid=1484 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-05-09 13:09:34 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-05-09 13:09:34 | scheduler started pid=1484 skip_warmup=False
+2026-05-09 13:09:34 | enter _main_loop
+2026-05-09 14:51:36 | cmd_start finally shutdown_requested=True monitoring=False
+2026-05-09 14:52:20 | cmd_start_bg entered
+2026-05-09 14:52:20 | launcher_pid=4252 cmd=['/usr/bin/python3', '/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-05-09 14:52:20 | cmd_start_bg cwd=/home/node/.openclaw/workspace/skills/fund-monitor stdout_log=/home/node/.openclaw/workspace/skills/fund-monitor/logs/monitor_stdout.log
+2026-05-09 14:52:20 | cmd_start entered
+2026-05-09 14:52:20 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start', '--skip-warmup']
+2026-05-09 14:52:20 | about to create BackgroundScheduler daemon=False
+2026-05-09 14:52:20 | scheduler.start() ok
+2026-05-09 14:52:20 | save_pid ok pid=4252 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-05-09 14:52:20 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-05-09 14:52:20 | scheduler started pid=4252 skip_warmup=True
+2026-05-09 14:52:20 | enter _main_loop
+2026-05-09 15:06:13 | cmd_start finally shutdown_requested=True monitoring=False
+2026-05-09 15:06:17 | cmd_start entered
+2026-05-09 15:06:17 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start']
+2026-05-09 15:06:17 | about to create BackgroundScheduler daemon=False
+2026-05-09 15:06:17 | scheduler.start() ok
+2026-05-09 15:06:17 | save_pid ok pid=4654 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-05-09 15:06:17 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-05-09 15:06:17 | scheduler started pid=4654 skip_warmup=False
+2026-05-09 15:06:17 | enter _main_loop
+2026-05-09 15:16:22 | cmd_start finally shutdown_requested=True monitoring=False
+2026-05-09 15:16:30 | cmd_start entered
+2026-05-09 15:16:30 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start']
+2026-05-09 15:16:31 | about to create BackgroundScheduler daemon=False
+2026-05-09 15:16:31 | scheduler.start() ok
+2026-05-09 15:16:31 | save_pid ok pid=4928 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-05-09 15:16:31 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-05-09 15:16:31 | scheduler started pid=4928 skip_warmup=False
+2026-05-09 15:16:31 | enter _main_loop
+2026-05-09 15:26:35 | cmd_start finally shutdown_requested=True monitoring=False
+2026-05-09 15:26:44 | cmd_start entered
+2026-05-09 15:26:44 | argv=['/home/node/.openclaw/workspace/skills/fund-monitor/tools/monitor.py', 'start']
+2026-05-09 15:26:44 | about to create BackgroundScheduler daemon=False
+2026-05-09 15:26:44 | scheduler.start() ok
+2026-05-09 15:26:44 | save_pid ok pid=5203 path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor.pid
+2026-05-09 15:26:44 | write_heartbeat starting ok path=/home/node/.openclaw/workspace/skills/fund-monitor/data/monitor_heartbeat.json
+2026-05-09 15:26:44 | scheduler started pid=5203 skip_warmup=False
+2026-05-09 15:26:44 | enter _main_loop

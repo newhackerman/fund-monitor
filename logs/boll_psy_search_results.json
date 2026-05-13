@@ -1,0 +1,97 @@
+{
+  "timestamp": "2026-05-12T09:26:45.353710",
+  "date_range": [
+    "2026-03-30",
+    "2026-04-22"
+  ],
+  "codes_tested": [
+    "512880",
+    "513050",
+    "159915",
+    "513310"
+  ],
+  "results": {
+    "512880": {
+      "best_params": {
+        "boll_period": 20,
+        "boll_std": 2.0,
+        "psy_period": 12,
+        "psy_oversold": 30,
+        "rsi_min_for_boll_entry": 50,
+        "rsi_max_for_boll_entry": 70,
+        "min_entry_score": 65,
+        "boll_lower_touch_pct": 0.03,
+        "boll_mid_support_pct": 0.015
+      },
+      "buy_signals": 2,
+      "completed_trades": 1,
+      "win_rate": 0.0,
+      "profit_factor": 0.0,
+      "total_profit_pct": -0.8395522388059813,
+      "entry_style_dist": {
+        "boll_psy_combined": 1
+      }
+    },
+    "513050": {
+      "best_params": {
+        "boll_period": 20,
+        "boll_std": 2.0,
+        "psy_period": 12,
+        "psy_oversold": 30,
+        "rsi_min_for_boll_entry": 50,
+        "rsi_max_for_boll_entry": 70,
+        "min_entry_score": 65,
+        "boll_lower_touch_pct": 0.03,
+        "boll_mid_support_pct": 0.015
+      },
+      "buy_signals": 1,
+      "completed_trades": 0,
+      "win_rate": 0,
+      "profit_factor": 0,
+      "total_profit_pct": 0,
+      "entry_style_dist": {}
+    },
+    "159915": {
+      "best_params": {
+        "boll_period": 20,
+        "boll_std": 2.0,
+        "psy_period": 12,
+        "psy_oversold": 30,
+        "rsi_min_for_boll_entry": 50,
+        "rsi_max_for_boll_entry": 70,
+        "min_entry_score": 65,
+        "boll_lower_touch_pct": 0.03,
+        "boll_mid_support_pct": 0.015
+      },
+      "buy_signals": 3,
+      "completed_trades": 2,
+      "win_rate": 0.0,
+      "profit_factor": 0.0,
+      "total_profit_pct": -1.9449565368057857,
+      "entry_style_dist": {
+        "boll_psy_combined": 2
+      }
+    },
+    "513310": {
+      "best_params": {
+        "boll_period": 20,
+        "boll_std": 2.0,
+        "psy_period": 12,
+        "psy_oversold": 30,
+        "rsi_min_for_boll_entry": 50,
+        "rsi_max_for_boll_entry": 70,
+        "min_entry_score": 65,
+        "boll_lower_touch_pct": 0.03,
+        "boll_mid_support_pct": 0.015
+      },
+      "buy_signals": 5,
+      "completed_trades": 4,
+      "win_rate": 0.0,
+      "profit_factor": 0.0,
+      "total_profit_pct": -1.26898210862108,
+      "entry_style_dist": {
+        "boll_psy_combined": 4
+      }
+    }
+  }
+}

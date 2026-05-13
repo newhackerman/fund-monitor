@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fund Monitor Web UI</title>
+  <style>
+    :root{ --bg:#0b1020; --card:#121933; --muted:#8fa0c7; --text:#ecf2ff; --line:#243056; --ok:#28c76f; --bad:#ff6b6b; --buy:#4dabf7; --sell:#ffa94d; --profit:#22c55e; --stop:#ef4444; }
+    *{ box-sizing:border-box; }
+    body{ margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); color:var(--text); }
+    .wrap{ max-width:1400px; margin:0 auto; padding:20px; }
+    h1{ margin:0 0 8px; font-size:28px; }
+    .muted{ color:var(--muted); }
+    .toolbar{ display:flex; justify-content:space-between; gap:12px; align-items:flex-start; margin-bottom:18px; }
+    .toolbar-right{ display:flex; flex-direction:column; gap:8px; align-items:flex-end; }
+    .controls{ display:flex; gap:8px; flex-wrap:wrap; }
+    .pill{ padding:6px 10px; border:1px solid var(--line); border-radius:999px; color:var(--muted); background:#0f1630; font-size:12px; }
+    .pill.health.ok{ color:#d9ffe8; border-color:#1e7a46; background:#0f2b1c; }
+    .pill.health.bad{ color:#ffe1e1; border-color:#7e2f2f; background:#2b1313; }
+    .rate-btn,.filter-btn{ cursor:pointer; padding:7px 12px; border-radius:10px; border:1px solid var(--line); background:#101736; color:var(--text); }
+    .rate-btn.active,.filter-btn.active{ border-color:#5b8cff; box-shadow:0 0 0 1px #5b8cff inset; }
+    .section-title{ margin:22px 0 12px; font-size:16px; color:#dbe7ff; }
+    .grid{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; }
+    .row{ display:grid; grid-template-columns:1.1fr 1fr; gap:12px; }
+    .card{ background:var(--card); border:1px solid var(--line); border-radius:16px; padding:14px 16px; min-width:0; }
+    .k{ color:var(--muted); font-size:12px; margin-bottom:8px; }
+    .v{ font-size:24px; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .ok{ color:var(--ok); } .bad{ color:var(--bad); } .buy{ color:var(--buy); } .sell{ color:var(--sell); }
+    table{ width:100%; border-collapse:collapse; font-size:13px; }
+    th,td{ border-bottom:1px solid var(--line); padding:8px 6px; text-align:left; vertical-align:top; }
+    th{ color:#dbe7ff; cursor:pointer; user-select:none; }
+    tr:hover{ background:#0f1630; }
+    .linked-active{ background:#152141 !important; }
+    .mini-list{ display:grid; gap:8px; }
+    .mini-item{ border:1px solid var(--line); border-radius:12px; padding:10px; background:#0f1630; cursor:pointer; }
+    .mini-item.active{ border-color:#5b8cff; box-shadow:0 0 0 1px #5b8cff inset; }
+    .mini-top{ display:flex; justify-content:space-between; margin-bottom:6px; font-size:12px; color:var(--muted); }
+    pre{ margin:0; white-space:pre-wrap; word-break:break-word; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:12px; line-height:1.45; max-height:420px; overflow:auto; }
+    .tag{ display:inline-block; padding:2px 8px; border-radius:999px; border:1px solid var(--line); font-size:11px; color:var(--muted); background:#0f1630; }
+    .log-buy{ color:var(--buy); font-weight:700; }
+    .log-sell{ color:var(--sell); font-weight:700; }
+    .log-error{ color:var(--bad); font-weight:700; }
+    .log-profit{ color:var(--profit); font-weight:700; }
+    .log-stop{ color:var(--stop); font-weight:700; }
+    @media (max-width:1100px){ .grid,.row{ grid-template-columns:1fr 1fr; } }
+    @media (max-width:700px){ .grid,.row{ grid-template-columns:1fr; } .toolbar{flex-direction:column;} .toolbar-right{align-items:flex-start;} }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="toolbar">
+    <div><h1>Fund Monitor Web UI</h1><div class="muted">实时查看监控状态、信号、交易、收益和日志</div></div>
+    <div class="toolbar-right">
+      <div class="controls"><span class="pill" id="now">--</span><span class="pill" id="lastRefresh">最后刷新：--</span><span class="pill health" id="dataHealth">接口状态：--</span></div>
+      <div class="controls"><span class="muted" style="font-size:12px;">自动刷新</span><button class="rate-btn" data-rate="5000">5s</button><button class="rate-btn active" data-rate="10000">10s</button><button class="rate-btn" data-rate="20000">20s</button><button class="filter-btn" id="clearLink">清除联动</button></div>
+    </div>
+  </div>
+
+  <div class="section-title">实时状态</div>
+  <div class="grid">
+    <div class="card"><div class="k">运行状态</div><div class="v" id="running">--</div></div>
+    <div class="card"><div class="k">监控基金数</div><div class="v" id="watchlist">--</div></div>
+    <div class="card"><div class="k">日志更新时间</div><div class="v" style="font-size:18px" id="logtime">--</div></div>
+    <div class="card"><div class="k">PID</div><div class="v" style="font-size:18px" id="pid">--</div></div>
+  </div>
+
+  <div class="section-title">最新交易日概览</div>
+  <div class="grid">
+    <div class="card"><div class="k">最新交易日</div><div class="v" style="font-size:18px" id="latestDay">--</div></div>
+    <div class="card"><div class="k">信号数</div><div class="v" id="signalsCount">--</div></div>
+    <div class="card"><div class="k">交易数</div><div class="v" id="tradesCount">--</div></div>
+    <div class="card"><div class="k">平仓数</div><div class="v" id="closedCount">--</div></div>
+    <div class="card"><div class="k">未平仓</div><div class="v" id="openCount">--</div></div>
+    <div class="card"><div class="k">胜率</div><div class="v" id="winRate">--</div></div>
+    <div class="card"><div class="k">累计收益</div><div class="v" id="sumProfit">--</div></div>
+    <div class="card"><div class="k">平均收益</div><div class="v" id="avgProfit">--</div></div>
+  </div>
+
+  <div class="row">
+    <div class="card">
+      <div class="section-title" style="margin-top:0">最近新信号</div>
+      <div id="recentSignals" class="mini-list"></div>
+    </div>
+    <div class="card">
+      <div class="section-title" style="margin-top:0">最近 1 小时信号</div>
+      <div id="recent1hSignals" class="mini-list"></div>
+    </div>
+  </div>
+
+  <div class="section-title">按基金聚合</div>
+  <div class="card"><table><thead><tr><th data-sort="code">代码</th><th data-sort="name">名称</th><th data-sort="buy_count">BUY</th><th data-sort="sell_count">SELL</th><th data-sort="latest_type">最新类型</th><th data-sort="latest_status">最新仓位状态</th><th data-sort="open">是否未平仓</th><th data-sort="latest_time">最新时间</th></tr></thead><tbody id="byCodeBody"></tbody></table></div>
+
+  <div class="section-title">信号流水</div>
+  <div class="card"><table><thead><tr><th>时间</th><th>代码</th><th>类型</th><th>价格</th><th>原因</th></tr></thead><tbody id="signalsBody"></tbody></table></div>
+
+  <div class="section-title">交易事件</div>
+  <div class="card"><table><thead><tr><th>时间</th><th>代码</th><th>类型</th><th>价格</th><th>收益%</th><th>状态</th><th>原因</th></tr></thead><tbody id="tradeEventsBody"></tbody></table></div>
+
+  <div class="section-title">当前持仓</div>
+  <div class="card"><table><thead><tr><th>时间</th><th>代码</th><th>名称</th><th>买入价</th><th>最新价</th><th>浮盈%</th><th>持有分钟</th><th>状态</th><th>原因</th></tr></thead><tbody id="positionsBody"></tbody></table></div>
+
+  <div class="section-title">日志（最近 80 行）</div>
+  <div class="card"><pre id="logs">--</pre></div>
+
+  <div class="section-title">说明</div>
+  <div class="card"><div class="muted">
+    <div>1. 顶部“接口状态”用于区分核心接口是否正常，以及部分面板是否降级。</div>
+    <div>2. “最新类型”显示最近一条交易动作（BUY/SELL），“最新仓位状态”显示当前仓位是否 OPEN/CLOSED。</div>
+    <div>3. 默认刷新已调整为 10 秒；如果 Windows 上仍偶发不稳定，优先继续使用 10s 或 20s。</div>
+    <div>4. 日志区按时间从近到远显示，最新日志在最上方。</div>
+    <div>5. 日志区只显示最近 80 行，并且面板本身有滚动高度限制，避免无限输出。</div>
+    <div style="margin-top:8px;">这样就把“事件类型”和“仓位状态”拆成两层，避免把 BUY/SELL 和 OPEN/CLOSED 混成一个维度误读。</div>
+  </div></div>
+</div>
+<script>
+let refreshMs=10000,timer=null,clockTimer=null,byCodeSort={key:'latest_time',asc:false},linkedCode='',isRefreshing=false;
+async function j(url){ const r=await fetch(url,{cache:'no-store'}); if(!r.ok) throw new Error(url+' '+r.status); return await r.json(); }
+async function jSafe(url, fallback){ try{ return await j(url); }catch(e){ console.warn('fetch failed:', url, e); return fallback; } }
+function esc(s){ return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+function clsProfit(v){ return Number(v)>0?'ok':Number(v)<0?'bad':'muted'; }
+function typeCls(t){ return t==='BUY'?'buy':t==='SELL'?'sell':'muted'; }
+function shortReason(s){ const x=String(s||''); return x.length>40?x.slice(0,40)+'…':x; }
+function setText(id,v,f='读取失败'){ document.getElementById(id).textContent=(v===null||v===undefined||v==='')?f:v; }
+function setProfit(id,v){ const el=document.getElementById(id); if(v===null||v===undefined||v===''){ el.textContent='读取失败'; el.className='v bad'; return;} el.className='v '+clsProfit(v); el.textContent=String(v)+(String(v).includes('%')?'':'%'); }
+function setHealth(ok,msg){ const el=document.getElementById('dataHealth'); el.textContent='接口状态：'+msg; el.className='pill health '+(ok?'ok':'bad'); }
+function formatClock(d){ return d.toLocaleTimeString('zh-CN',{hour12:false}); }
+function updateNowClock(){ setText('now',formatClock(new Date()),'--'); }
+function markLastRefresh(){ setText('lastRefresh','最后刷新：'+formatClock(new Date()),'--'); }
+function startTimer(){ if(timer) clearInterval(timer); timer=setInterval(()=>{ refresh(); },refreshMs); }
+function startClock(){ updateNowClock(); if(clockTimer) clearInterval(clockTimer); clockTimer=setInterval(updateNowClock,1000); }
+function applyLinkFilter(code){ linkedCode = code || ''; refresh(); }
+function passesLinkedCode(x){ return !linkedCode || String(x.code||'')===linkedCode; }
+function highlightLogLine(line){ return esc(line)
+  .replace(/\b(BUY)\b/g,'<span class="log-buy">$1</span>')
+  .replace(/\b(SELL)\b/g,'<span class="log-sell">$1</span>')
+  .replace(/\b(ERROR|Traceback|Exception)\b/g,'<span class="log-error">$1</span>')
+  .replace(/(止盈|盈利保护|profit)/g,'<span class="log-profit">$1</span>')
+  .replace(/(止损|MA5 拐头止损|loss)/g,'<span class="log-stop">$1</span>');
+}
+function renderMiniList(elId,items){ const el=document.getElementById(elId); const arr=(items||[]).filter(passesLinkedCode); if(!arr.length){ el.innerHTML='<div class="muted">暂无数据</div>'; return;} el.innerHTML=arr.map(x=>`<div class="mini-item ${linkedCode&&x.code===linkedCode?'active':''}" data-code="${esc(x.code)}"><div class="mini-top"><span class="${typeCls(x.type)}">${esc(x.type)}</span><span>${esc(x.time)}</span></div><div><b>${esc(x.code)}</b> ${esc(x.name||'')}</div><div class="muted">${esc(shortReason(x.reason))}</div></div>`).join(''); el.querySelectorAll('.mini-item').forEach(n=>n.addEventListener('click',()=>applyLinkFilter(n.dataset.code))); }
+function renderByCode(rows){ const body=document.getElementById('byCodeBody'); const arr=[...(rows||[])]; arr.sort((a,b)=>{ let av=a[byCodeSort.key],bv=b[byCodeSort.key]; if(byCodeSort.key==='open'){ av=a.open?1:0; bv=b.open?1:0;} av=(av??''); bv=(bv??''); if(typeof av==='string') av=av.toUpperCase(); if(typeof bv==='string') bv=bv.toUpperCase(); if(av===bv) return 0; return (av>bv?1:-1)*(byCodeSort.asc?1:-1); }); body.innerHTML=arr.map(x=>`<tr class="${linkedCode&&x.code===linkedCode?'linked-active':''}" data-code="${esc(x.code)}"><td>${esc(x.code)}</td><td>${esc(x.name||'')}</td><td>${esc(x.buy_count)}</td><td>${esc(x.sell_count)}</td><td class="${typeCls(x.latest_type)}">${esc(x.latest_type||'')}</td><td><span class="tag">${esc(x.latest_status||'')}</span></td><td>${x.open?'<span class="ok">是</span>':'<span class="muted">否</span>'}</td><td>${esc(x.latest_time||'')}</td></tr>`).join('')||'<tr><td colspan="8" class="muted">暂无数据</td></tr>'; body.querySelectorAll('tr[data-code]').forEach(tr=>tr.addEventListener('click',()=>applyLinkFilter(tr.dataset.code))); }
+function renderSignals(items){ const body=document.getElementById('signalsBody'); const arr=(items||[]).filter(passesLinkedCode); body.innerHTML=arr.map(x=>`<tr class="${linkedCode&&x.code===linkedCode?'linked-active':''}"><td>${esc(x.time)}</td><td>${esc(x.code)}</td><td class="${typeCls(x.type)}">${esc(x.type)}</td><td>${esc(x.price)}</td><td>${esc(x.reason)}</td></tr>`).join('')||'<tr><td colspan="5" class="muted">无匹配信号</td></tr>'; }
+function renderTradeEvents(items){ const body=document.getElementById('tradeEventsBody'); const arr=(items||[]).filter(passesLinkedCode); body.innerHTML=arr.map(x=>`<tr class="${linkedCode&&x.code===linkedCode?'linked-active':''}"><td>${esc(x.time)}</td><td>${esc(x.code)}</td><td class="${typeCls(x.type)}">${esc(x.type)}</td><td>${esc(x.price)}</td><td class="${clsProfit(x.profit_pct)}">${esc(x.profit_pct??'')}</td><td><span class="tag">${esc(x.status??'')}</span></td><td>${esc(x.reason)}</td></tr>`).join('')||'<tr><td colspan="7" class="muted">无匹配交易事件</td></tr>'; }
+function renderPositions(items){ const body=document.getElementById('positionsBody'); const arr=(items||[]).filter(passesLinkedCode); body.innerHTML=arr.map(x=>`<tr class="${linkedCode&&x.code===linkedCode?'linked-active':''}"><td>${esc(x.time)}</td><td>${esc(x.code)}</td><td>${esc(x.name||'')}</td><td>${esc(x.price)}</td><td>${esc(x.latest_close??'')}</td><td class="${clsProfit(x.floating_profit_pct)}">${esc(x.floating_profit_pct??'')}</td><td>${esc(x.hold_minutes??'')}</td><td><span class="tag">${esc(x.status||'OPEN')}</span></td><td>${esc(x.reason||'')}</td></tr>`).join('')||'<tr><td colspan="9" class="muted">当前无未平仓持仓</td></tr>'; }
+function renderStatus(status){
+  const coreOk = !!status;
+  if(!coreOk){
+    setHealth(false,'status 接口异常');
+    console.error('core status api failed');
+    return false;
+  }
+  markLastRefresh();
+  document.getElementById('running').innerHTML=status.running===true?'<span class="ok">运行中</span>':'<span class="bad">已停止</span>';
+  setText('watchlist',status.watchlist_count,'读取失败');
+  setText('pid',status.pid || status.keepalive_pid,'--');
+  setText('logtime',status.latest_log_time,'读取失败');
+  return true;
+}
+function renderSummary(summary){
+  setText('latestDay',summary&&summary.latest_trading_day,'读取失败');
+  setText('signalsCount',summary&&summary.latest_day_signal_count,'读取失败');
+  setText('tradesCount',summary&&summary.latest_day_trade_count,'读取失败');
+  setText('closedCount',summary&&summary.latest_day_closed_count,'读取失败');
+  setText('openCount',summary&&summary.latest_day_open_count,'读取失败');
+  setProfit('winRate',summary&&summary.latest_day_win_rate);
+  setProfit('sumProfit',summary&&summary.latest_day_sum_profit_pct);
+  setProfit('avgProfit',summary&&summary.latest_day_avg_profit_pct);
+  renderMiniList('recentSignals',(summary&&summary.recent_new_signals)||[]);
+  renderMiniList('recent1hSignals',(summary&&summary.recent_1h_signals)||[]);
+  renderByCode((summary&&summary.by_code_rows)||[]);
+  renderPositions((summary&&summary.open_positions)||[]);
+}
+async function refresh(){
+  if(isRefreshing) return;
+  isRefreshing = true;
+  try{
+    const status = await jSafe('/api/status', null);
+    const coreOk = renderStatus(status);
+    if(!coreOk) return;
+    const [summary,logs,signals,trades]=await Promise.all([
+      jSafe('/api/summary', null),
+      jSafe('/api/logs', []),
+      jSafe('/api/signals', []),
+      jSafe('/api/trades', [])
+    ]);
+    const partialFails = [summary,logs,signals,trades].filter(x=>x===null).length;
+    setHealth(true, linkedCode ? '已联动过滤 '+linkedCode : (partialFails ? '核心接口正常，部分面板降级' : '接口正常'));
+    renderSummary(summary);
+    renderSignals(Array.isArray(signals)?signals:[]);
+    renderTradeEvents(Array.isArray(trades)?trades:[]);
+    document.getElementById('logs').innerHTML = Array.isArray(logs) ? [...logs].reverse().map(highlightLogLine).join('\n') : '读取失败';
+  } finally {
+    isRefreshing = false;
+  }
+}
+(function init(){ document.querySelectorAll('.rate-btn').forEach(btn=>btn.addEventListener('click',()=>{ refreshMs=Number(btn.dataset.rate); document.querySelectorAll('.rate-btn').forEach(x=>x.classList.remove('active')); btn.classList.add('active'); startTimer(); })); document.querySelectorAll('[data-sort]').forEach(th=>th.addEventListener('click',()=>{ const key=th.dataset.sort; byCodeSort.asc=byCodeSort.key===key?!byCodeSort.asc:true; byCodeSort.key=key; refresh(); })); document.getElementById('clearLink').addEventListener('click',()=>applyLinkFilter('')); startClock(); refresh(); startTimer(); })();
+</script>
+</body>
+</html>

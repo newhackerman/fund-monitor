@@ -1,0 +1,96 @@
+monitor:
+  interval: 60
+  fast_mode: false
+  max_retries: 3
+  retry_delay: 1
+  warmup_on_start: true
+  warmup_periods_1m: 240
+  market_hours:
+    start: 09:30
+    end: '15:00'
+    noon_break:
+      start: '11:30'
+      end: '13:00'
+indicators:
+  macd:
+    fast: 12
+    slow: 26
+    signal: 9
+  rsi:
+    period: 14
+  atr:
+    period: 14
+signals:
+  cooldown_minutes: 45
+  max_new_buys_per_cycle: 4
+  buy:
+    mode: breakout_pullback_plus_continuation
+    allowed_sessions:
+    - start: 09:40
+      end: '10:40'
+    - start: '13:05'
+      end: '14:08'
+    disable_new_buy_after: '14:08'
+    trend_rsi_min: 57
+    trend_rsi_max: 76
+    trend_volume_ratio: 0.98
+    require_ma_uptrend: true
+    min_ma5_rise_pct: 0.012
+    min_ma10_rise_pct: 0.004
+    max_rsi_for_entry: 69
+    min_breakout_strength_pct: 0.2
+    min_volume_ratio: 0.98
+    max_pullback_pct: 0.35
+    max_chase_above_ma5_pct: 0.28
+    breakout_lookback_minutes: 15
+    breakout_min_pct: 0.2
+    pullback_min_pct: 0.03
+    pullback_max_pct: 0.48
+    require_first_pullback: true
+    allow_continuation_entry: true
+    continuation_min_breakout_persistence_pct: 0.02
+    continuation_min_rebound_strength_pct: 0.18
+    continuation_max_ma5_gap_pct: 0.28
+    continuation_min_volume_ratio: 1.0
+    continuation_max_rsi: 67
+    continuation_min_price_above_prev_high_pct: 0.0
+    allow_reclaim_entry: true
+    reclaim_min_rsi: 54
+    reclaim_max_rsi: 66
+    reclaim_min_volume_ratio: 1.01
+    reclaim_min_pullback_pct: 0.10
+    reclaim_max_pullback_pct: 0.38
+    reclaim_min_rebound_strength_pct: 0.15
+    reclaim_min_breakout_strength_pct: -0.10
+    reclaim_min_breakout_persistence_pct: -0.40
+    reclaim_min_ma5_gap_pct: -0.08
+    reclaim_max_ma5_gap_pct: 0.10
+    allow_late_strong_entry: true
+    late_allowed_session:
+      start: '14:08'
+      end: '14:30'
+    late_min_rsi: 64
+    late_max_rsi: 82
+    late_min_volume_ratio: 1.04
+    late_min_breakout_strength_pct: 0.22
+    late_min_breakout_persistence_pct: 0.05
+    late_min_rebound_strength_pct: 0.35
+    late_max_ma5_gap_pct: 0.28
+  sell:
+    require_open_position: true
+    take_profit_pct: 5.0
+    stop_loss_pct: 0.65
+    trailing_drawdown_pct: 0.9
+    max_hold_minutes: 15
+    stale_exit_minutes: 10
+    stale_exit_max_profit_pct: 0.25
+    stale_exit_profit_ceiling_pct: 0.05
+    allow_overnight: false
+  atr:
+    period: 14
+    stop_loss_multiplier: 1.5
+    take_profit_multiplier: 2.6
+    min_stop_loss_pct: 0.55
+    max_stop_loss_pct: 0.95
+    enable_trailing_take_profit: true
+    trailing_buffer_multiplier: 0.8

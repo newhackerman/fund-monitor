@@ -1,0 +1,76 @@
+[
+  {
+    "type": "BUY",
+    "code": "159866",
+    "name": "日经ETF工银",
+    "price": 1.368,
+    "time": "2026-03-27 13:10:09",
+    "reason": "突破后首次回踩 + RSI(72.3) + 量比(1.02x) + 回踩(0.15%) + 贴近MA5(0.01%)",
+    "indicators": {
+      "macd_dif": 0.0031565639,
+      "macd_dea": 0.0024216117,
+      "rsi": 72.2705,
+      "volume_ratio": 1.0155,
+      "ma5": 1.3678,
+      "ma10": 1.3665,
+      "atr": 0.0010506,
+      "pullback_pct": 0.1460,
+      "ma5_gap_pct": 0.0146,
+      "breakout_strength_pct": 0.2928
+    },
+    "confidence": "HIGH",
+    "status": "CLOSED",
+    "fast_mode": false,
+    "realtime": {
+      "code": "159866",
+      "name": "日经ETF工银",
+      "price": 1.368,
+      "change_pct": 0.6623,
+      "change": 0.009,
+      "volume": 545429,
+      "amount": 0,
+      "high": 1.371,
+      "low": 1.344,
+      "open": 1.344,
+      "prev_close": 1.359,
+      "timestamp": "2026-03-27 13:10:09",
+      "source": "tencent"
+    },
+    "sell_time": "2026-03-27 13:13:04",
+    "sell_price": 1.369,
+    "sell_reason": "MA5 拐头止盈 (1.3686 < 1.3688)"
+  },
+  {
+    "type": "SELL",
+    "code": "159866",
+    "name": "日经ETF工银",
+    "price": 1.369,
+    "time": "2026-03-27 13:13:04",
+    "reason": "MA5 拐头止盈 (1.3686 < 1.3688)",
+    "indicators": {
+      "close": 1.369,
+      "buy_price": 1.368,
+      "profit_pct": 0.0731,
+      "ma5": 1.3686,
+      "prev_ma5": 1.3688,
+      "held_minutes": 2.9191
+    },
+    "confidence": "HIGH",
+    "status": "CLOSE",
+    "realtime": {
+      "code": "159866",
+      "name": "日经ETF工银",
+      "price": 1.369,
+      "change_pct": 0.7358,
+      "change": 0.01,
+      "volume": 553441,
+      "amount": 0,
+      "high": 1.371,
+      "low": 1.344,
+      "open": 1.344,
+      "prev_close": 1.359,
+      "timestamp": "2026-03-27 13:13:04",
+      "source": "tencent"
+    }
+  }
+]

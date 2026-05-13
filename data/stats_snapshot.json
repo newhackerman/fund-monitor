@@ -1,0 +1,124 @@
+{
+  "signals": {
+    "raw_count": 2,
+    "deduped_count": 1,
+    "latest": {
+      "type": "SELL",
+      "code": "520660",
+      "name": "港股通央企红利ETF南方",
+      "price": 1.071,
+      "time": "2026-03-31 13:00:13",
+      "reason": "跨日补救强制平仓",
+      "indicators": {
+        "close": 1.071,
+        "buy_price": 1.09,
+        "profit_pct": -1.7431192660550574,
+        "held_minutes": 1588.0745123499998,
+        "max_profit_pct": 0.6422
+      },
+      "confidence": "HIGH",
+      "status": "CLOSE",
+      "realtime": {
+        "code": "520660",
+        "name": "港股通央企红利ETF南方",
+        "price": 1.071,
+        "change_pct": -2.281021897810231,
+        "change": -0.025000000000000133,
+        "volume": 1232148.0,
+        "amount": 0.0,
+        "high": 1.1,
+        "low": 1.07,
+        "open": 1.097,
+        "prev_close": 1.096,
+        "timestamp": "2026-03-31 13:00:13",
+        "source": "tencent"
+      }
+    }
+  },
+  "positions": {
+    "open_count": 0,
+    "latest_open": null
+  },
+  "trades": {
+    "event_count": 8,
+    "closed_trade_count": 4,
+    "winning_count": 1,
+    "losing_count": 3,
+    "win_rate_pct": 25.0,
+    "avg_profit_pct": 0.07,
+    "avg_loss_pct": -0.7033,
+    "avg_payoff_pct": 0.0995,
+    "sum_profit_pct": -2.04,
+    "sum_profit_abs": -0.023,
+    "avg_profit_abs": 0.001,
+    "avg_loss_abs": -0.008,
+    "avg_payoff_abs": 0.125,
+    "closed_trades": [
+      {
+        "id": "159866_SELL_20260327131309",
+        "code": "159866",
+        "name": "日经ETF工银",
+        "type": "SELL",
+        "price": 1.369,
+        "time": "2026-03-27 13:13:04",
+        "status": "CLOSED",
+        "reason": "MA5 拐头止盈 (1.3686 < 1.3688)",
+        "linked_buy_id": "159866_0_20260327131015",
+        "buy_price": 1.368,
+        "buy_time": "2026-03-27 13:10:09",
+        "profit": 0.001,
+        "profit_pct": 0.07
+      },
+      {
+        "id": "513030_SELL_20260327131309",
+        "code": "513030",
+        "name": "德国ETF华安",
+        "type": "SELL",
+        "price": 1.699,
+        "time": "2026-03-27 13:13:04",
+        "status": "CLOSED",
+        "reason": "MA5 拐头止损 (1.7002 < 1.7004)",
+        "linked_buy_id": "513030_1_20260327131115",
+        "buy_price": 1.701,
+        "buy_time": "2026-03-27 13:11:10",
+        "profit": -0.002,
+        "profit_pct": -0.12
+      },
+      {
+        "id": "513400_SELL_20260327133604",
+        "code": "513400",
+        "name": "道琼斯ETF鹏华",
+        "type": "SELL",
+        "price": 1.174,
+        "time": "2026-03-27 13:36:01",
+        "status": "CLOSED",
+        "reason": "MA5 拐头止损 (1.1762 < 1.1768)",
+        "linked_buy_id": "513400_4_20260327133315",
+        "buy_price": 1.177,
+        "buy_time": "2026-03-27 13:33:11",
+        "profit": -0.003,
+        "profit_pct": -0.25
+      },
+      {
+        "id": "520660_SELL_20260331130017",
+        "code": "520660",
+        "name": "港股通央企红利ETF南方",
+        "type": "SELL",
+        "price": 1.071,
+        "time": "2026-03-31 13:00:13",
+        "status": "CLOSED",
+        "reason": "跨日补救强制平仓",
+        "linked_buy_id": "520660_6_20260330103212",
+        "buy_price": 1.09,
+        "buy_time": "2026-03-30 10:32:09",
+        "profit": -0.019,
+        "profit_pct": -1.74
+      }
+    ]
+  },
+  "meta": {
+    "trade_count_definition": "trades.json 中 type=SELL and status=CLOSED",
+    "position_count_definition": "trades.json 中 type=BUY and status=OPEN",
+    "signal_count_definition": "signals.json 按 (type, code, time, reason) 去重后计数"
+  }
+}
