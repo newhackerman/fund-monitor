@@ -4,12 +4,17 @@ services:
     build: .
     container_name: fund-monitor
     restart: unless-stopped
-    ports:
-      - "8787:8787"
     environment:
       - TZ=Asia/Shanghai
-      - FUND_MONITOR_WEBUI_PORT=8787
     volumes:
+      # 持久化：持仓状态、信号历史、日线缓存（容器重启不丢）
       - ./data:/app/data
+      # 运行日志
       - ./logs:/app/logs
+      # 配置（候选池、风控参数、企微 webhook）—— 修改后需重启容器生效
       - ./config:/app/config
+    # 新监控器（轮动+风控）无需暴露端口，常驻运行 + 推送企微。
+    # 如启用旧 webui，取消下面注释：
+    # ports:
+    #   - "8787:8787"
+    #   - FUND_MONITOR_WEBUI_PORT=8787

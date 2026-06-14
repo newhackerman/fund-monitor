@@ -1,4 +1,23 @@
-# T+0 基金分钟级实时监控系统
+# T+0 基金 ETF 监控系统
+
+> ## ⭐ 当前推荐方案：ETF 轮动 + 风控监控器（聚宽七星高照策略移植）
+>
+> 旧的"突破回踩"分钟监控经实盘验证**无盈利**，已备份为 `tools/legacy_*.bak`。
+> 新监控器基于聚宽策略，回测年化 +90%（2024-2026），且充分利用 T+0 标的当日可买卖的优势
+> 做分钟级硬止损/止盈保护。
+>
+> **快速开始：**
+> ```bash
+> pip install -r requirements.txt
+> run_rotation_monitor.bat              # Windows 一键启动
+> # 或：python tools/daily_rotation_monitor.py start-bg
+> ```
+>
+> 📋 完整部署说明见 **[DEPLOY.md](DEPLOY.md)**
+> 📊 策略回测报告见 **[rotation/REPORT.md](rotation/REPORT.md)**
+> ⚙️ 配置文件 **[config/rotation.yaml](config/rotation.yaml)**
+
+---
 
 ## 当前状态
 
@@ -13,6 +32,9 @@
   - 实时逐分钟重放 vs 回测结果
 - 已补充**标准统计脚本**，用于统一报告口径
 
+> ⚠️ 以上为**旧监控**（突破回踩）的说明，该策略已确认无盈利，保留供历史参考。
+> 新监控器见本 README 顶部的推荐方案，或 `rotation/` 目录。
+
 > 建议：
 > - 做“回测和实时是否对齐”的验证时，用 `first`
 > - 做“是否还有优化空间”的研究时，再看 `best`
@@ -21,7 +43,17 @@
 
 ## 快速开始
 
-### 1. 启动监控
+### 0. 启动 ETF 轮动监控（推荐）
+
+```bash
+pip install -r requirements.txt
+run_rotation_monitor.bat              # Windows
+# 或：python tools/daily_rotation_monitor.py start-bg
+```
+
+详见 [DEPLOY.md](DEPLOY.md)。
+
+### 1. 启动监控（旧版，突破回踩，不推荐）
 
 ```bash
 python3 skills/fund-monitor/tools/monitor.py start-bg
@@ -311,6 +343,125 @@ skills/fund-monitor/
 └── logs/
     └── monitor.log         # 运行日志
 ```
+
+---
+
+## 日线 ETF 轮动策略（`rotation/`，独立于 T+0 监控）
+
+T+0 分钟监控是日内框架，但部分聚宽策略本质是**日线 T+1 轮动**（持仓多日），
+强行塞进分钟引擎会变形。因此项目提供独立的 `rotation/` 子包，
+作为"预留策略接口"的第一个实现，**不污染**现有 `tools/monitor.py` / `signals.py`。
+
+### 当前已实现：七星高照 ETF 轮动（移植自聚宽）
+
+来源：聚宽 king088 / 晨曦量化 / 在水一方ly（joinquant:72393/70329/69163）。
+核心逻辑：25 日加权对数回归动量分 × R²，叠加拉普拉斯/高斯动态滤波器、
+震荡期状态机、盈利保护、防御 ETF 轮动。
+
+### 目录
+
+```text
+rotation/
+├── daily_data.py        # 日线数据（腾讯主源 + 新浪兜底，本地 parquet 缓存）
+├── strategy_qixing.py   # 策略核心：打分 + 滤波器 + 震荡期 + 盈利保护
+├── backtest.py          # 回测引擎：T+1、等权、防御ETF、涨跌停、交易成本
+├── run.py               # 入口：拉数据 -> 回测 -> 报告
+└── REPORT.md            # 最新回测报告（人类可读）
+config/rotation.yaml     # 策略参数（预留接口，便于新增策略对比）
+```
+
+### 用法
+
+```bash
+# 首次运行：拉取 39 个 ETF 日线（约 20 秒），缓存到 data/daily_cache/
+python -m rotation.run
+
+# 自定义区间
+python -m rotation.run --start 2024-01-01 --end 2026-06-12
+
+# 强制刷新数据
+python -m rotation.run --refresh
+```
+
+输出：
+- `rotation/REPORT.md` —— 人类可读报告（含基准对照、样本外验证、风险提示）
+- `data/rotation_backtest_report.json` —— 结构化完整报告
+- `data/rotation_equity_curve.csv` —— 净值曲线
+- `data/rotation_trades.csv` —— 交易明细
+
+### 回测结论摘要（2024-01 ~ 2026-06）
+
+| 指标 | 值 |
+|---|---|
+| 累计收益 | +403.24% |
+| 年化收益 | +93.71% |
+| 最大回撤 | -20.74% |
+| 夏普 | 1.893 |
+| 相对等权池超额 | +346.7% |
+| 样本外（2025-03~2026-06）年化 | +154.8% |
+
+**关键判读**：策略相对"等权全池买入持有"超额 +346%，说明收益主要来自**选股轮动**
+而非候选池 beta；样本内外分段都显著正收益，未发现过拟合迹象。
+
+**已知局限**（详见 REPORT.md）：回测期偏牛市、跨境 ETF 溢价风险未过滤、
+满仓单只的流动性风险。**不构成投资建议。**
+
+### 预留接口：新增策略
+
+后续要对比其他策略（如均线趋势、波动率目标），只需新增 `rotation/strategy_xxx.py`，
+实现 `score_etf(...)`，在 `config/rotation.yaml` 加一段配置，复用 `backtest.py` 引擎即可。
+
+### 实盘信号监控（每日 13:10 推送）
+
+`tools/daily_rotation_monitor.py` 是基于聚宽策略的**实时信号+风控监控器**：
+
+**两层机制（充分利用 T+0 标的当日可买卖的优势）：**
+
+| 机制 | 频率 | 触发时点 | 作用 |
+|---|---|---|---|
+| **日频轮动** | 每日 1 次 | 13:10 | 打分选最强 ETF，生成 BUY/SELL 调仓信号 |
+| **分钟级风控** | 每 30 秒 | 全交易日 | 对持仓拉实时价，硬止损/止盈保护即时触发 |
+
+- 日频轮动：用最新日线 + 13:10 实时价给 27 个候选 ETF 打分 → 对比目标持仓与当前持仓 → 调仓
+- 分钟级风控（T+0 优势核心）：
+  - **硬止损**：买入后亏损 ≤ -5% 立即卖出（`stop_loss_pct`）
+  - **止盈保护**：浮盈 > +2% 后启动，从持仓最高价回撤 ≥ 5% 卖出（`profit_protect_activate_pct` + `profit_protect_drawdown_pct`）
+  - 启动门槛避免刚买入被日内噪音扫出
+- 有信号 → 推送**企业微信**（仅推送，不自动下单）
+- 持仓状态持久化到 `data/daily_rotation_state.json`，重启不丢
+
+```bash
+# 后台常驻运行（推荐）—— 日频 13:10 轮动 + 分钟级风控
+python tools/daily_rotation_monitor.py start-bg
+
+# 查看状态和当前持仓
+python tools/daily_rotation_monitor.py status
+
+# 停止
+python tools/daily_rotation_monitor.py stop
+
+# 立即跑一次轮动评估（会推送，测试用）
+python tools/daily_rotation_monitor.py run-once
+
+# 用历史数据模拟某天信号（不推送、不改状态）
+python tools/daily_rotation_monitor.py dry-run --date 2026-05-15
+```
+
+**风控参数**（`config/rotation.yaml` → `params.realtime_risk_control`）：
+
+```yaml
+realtime_risk_control:
+  enabled: true
+  stop_loss_pct: -0.05              # 硬止损 -5%
+  profit_protect_activate_pct: 0.02 # 浮盈>2% 才启动止盈保护
+  profit_protect_drawdown_pct: 0.05 # 启动后从高点回撤5%卖出
+```
+
+**重要约定**：
+- 这是**信号监控器**，只推送买卖建议，不连接券商、不实际下单
+- 原 `tools/monitor.py`（分钟级突破回刺，已确认无盈利）已备份为 `tools/legacy_monitor.py.bak`
+- 推送内容只含调仓/风控指令，无信号则静默
+- 配置：`config/rotation.yaml` 的 `notify.wechat` 段
 
 ---
 

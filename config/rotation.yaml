@@ -1,0 +1,129 @@
+# 七星高照 ETF 轮动策略参数（移植自聚宽 king088 / 晨曦量化 / 在水一方ly）
+# 候选池：用户 35 个 T+0 标的 + 聚宽原池 T+0 标的，合并去重到 27 个（每类保留 1 个）。
+# 全部为 T+0（跨境/商品/债券/货币 ETF），当日回转交易。
+
+strategy:
+  name: "qixing_rotation"
+  source: "joinquant:72393/70329/69163"
+  candidate_pool_source: "user_watchlist_35 + joinquant_T0, deduped to 27"
+
+# 候选池（27 只，全部 T+0）
+# 商品 6 + 债券 3 + 货币 1 + 跨境权益 17
+etf_pool:
+  # --- 跨境权益（17）---
+  - '513100'   # 纳指ETF国泰          (纳指100，宽基)
+  - '513500'   # 标普500ETF博时        (美股宽基)
+  - '159529'   # 标普消费ETF景顺        (美股消费)
+  - '513400'   # 道琼斯ETF鹏华         (道指)
+  - '513290'   # 纳指生物科技ETF汇添富    (美股生物医药)
+  - '513000'   # 日经225ETF易方达       (日本)
+  - '513030'   # 德国ETF华安           (德国DAX)
+  - '513080'   # 法国ETF华安           (法国CAC40)
+  - '159100'   # 巴西ETF华夏           (巴西)
+  - '513730'   # 东南亚科技ETF华泰柏瑞    (东南亚)
+  - '513310'   # 中韩半导体ETF华泰柏瑞    (半导体)
+  - '159920'   # 恒生ETF华夏           (恒生指数)
+  - '513130'   # 恒生科技ETF华泰柏瑞      (恒生科技)
+  - '513160'   # 港股科技ETF银华         (港股科技/互联网)
+  - '513690'   # 港股红利ETF博时         (港股红利)
+  - '520660'   # 港股通央企红利ETF南方     (港股央企红利)
+  - '513050'   # 中概互联网ETF易方达      (中概互联)
+  # --- 商品（6）---
+  - '518880'   # 黄金ETF华安
+  - '161226'   # 国投白银LOF
+  - '159980'   # 有色ETF大成
+  - '159985'   # 豆粕ETF华夏
+  - '501018'   # 南方原油LOF
+  - '159981'   # 能源化工ETF建信
+  # --- 债券（3）---
+  - '511010'   # 国债ETF国泰
+  - '511220'   # 城投债ETF海富通
+  - '511380'   # 可转债ETF博时
+  # --- 货币（1）---
+  - '159201'   # 自由现金流ETF华夏
+
+# 防御 ETF：无目标时切换到此标的（池内最低风险的债券类）
+defensive_etf: '511010'   # 国债ETF国泰
+
+# 风险基准：用于震荡期判断。用纳指100（流动性最好的跨境宽基）
+benchmark: '513100'
+
+# 核心参数（与聚宽 g.* 对应）
+params:
+  lookback_days: 25              # g.lookback_days 长期动量回归窗口
+  holdings_num: 1                # g.holdings_num 持仓数（满仓 1 只）
+  min_score_threshold: 0.0       # g.min_score_threshold
+  max_score_threshold: 100.0     # g.max_score_threshold
+
+  # 交易规则：全部 T+0
+  t_plus_zero: true              # true=当日买当日可卖
+
+  # 盈利保护
+  enable_profit_protection: true
+  profit_protection_mode: 'since_buy'  # 'since_buy'(持仓以来最高价) | 'lookback'(聚宽原版)
+  profit_protection_lookback: 1
+  profit_protection_threshold: 0.05  # 回撤 5% 触发
+
+  # 实时风控（分钟级，仅实盘监控用，T+0 优势）
+  realtime_risk_control:
+    enabled: true
+    # 硬止损：买入后亏损达此比例立即卖出（分钟级检查）
+    stop_loss_pct: -0.05          # -5%
+    # 止盈保护启动门槛：浮盈超过此值后，才激活回撤止盈（避免刚买入被噪音扫出）
+    profit_protect_activate_pct: 0.02   # +2%
+    # 止盈回撤阈值：启动后，从持仓最高价回撤达此比例卖出
+    profit_protect_drawdown_pct: 0.05   # 5%
+
+  # 单日跌幅过滤
+  loss_ratio: 0.97               # 近 3 日任一单日跌幅超 3% 排除
+
+  # 成交量放量过滤
+  enable_volume_check: true
+  volume_lookback: 5
+  volume_threshold: 2
+  volume_return_limit: 1.0
+
+  # 短期动量过滤
+  use_short_momentum_filter: true
+  short_lookback_days: 10
+  short_momentum_threshold: 0.0
+
+  # 溢价率过滤（本地无净值数据源 -> 关闭）
+  enable_premium_filter: false
+  premium_threshold: 0.20
+
+  # 震荡期机制
+  enable_range_bound_mode: true
+  lookback_high_low_days: 20
+  laplace_s_param: 0.05
+  laplace_min_slope: 0.001
+  gaussian_sigma: 1.2
+  gaussian_min_slope: 0.002
+  enable_bias_trigger: true
+  bias_threshold: 0.10
+  ma_period: 20
+  enable_rsi_trigger: true
+  rsi_overbought: 75
+  rsi_pullback: 60
+  enable_low_point_rise_trigger: true
+  low_point_rise_threshold: 0.03
+  enable_stable_signal_trigger: true
+  drawdown_recovery: 0.03
+  max_range_bound_days: 15
+  filter_switch_cooldown: 2
+
+# 回测设置
+backtest:
+  start: '2024-01-01'
+  end: '2026-06-12'
+  initial_capital: 100000.0
+  commission_rate: 0.0001  # 万一
+  min_commission: 5.0
+  slippage: 0.0001         # 万一
+  trade_at: 'close'
+
+# 信号推送（每日轮动监控器用）
+notify:
+  wechat:
+    enabled: true
+    key: 'bc6ae562-f951-4650-8475-3384fbb29bdc'   # 企业微信 webhook key
