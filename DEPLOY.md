@@ -1,6 +1,6 @@
 # 部署与运维指南
 
-本文档说明 **ETF 轮动 + 风控监控器**（聚宽七星高照策略移植版）的部署、启动、配置和日常运维。
+本文档说明 **ETF 轮动 + 风控监控器**（T+0动量强势策略）的部署、启动、配置和日常运维。
 
 > 策略细节见 `rotation/REPORT.md`，候选池和参数见 `config/rotation.yaml`。
 > 原"突破回踩"分钟监控（已确认无盈利）已备份为 `tools/legacy_*.bak`，不再推荐使用。
@@ -42,7 +42,7 @@ fund-monitor/
 │   ├── legacy_monitor.py.bak       # 旧监控备份
 │   └── legacy_breakout_signals.py.bak
 ├── rotation/                       # 聚宽策略核心 + 回测
-│   ├── strategy_qixing.py          # 打分、滤波器、震荡期、风控
+│   ├── strategy_momentum.py          # 打分、滤波器、震荡期、风控
 │   ├── daily_data.py               # 日线数据（腾讯主源+新浪兜底）
 │   ├── backtest.py                 # 回测引擎
 │   ├── run.py                      # 回测入口
@@ -418,7 +418,7 @@ python tools/daily_rotation_monitor.py run-loop
 
 | 项 | 旧监控（`tools/monitor.py`） | 新监控（`tools/daily_rotation_monitor.py`） |
 |---|---|---|
-| 策略 | 突破回踩（分钟级） | 聚宽七星轮动（日频+分钟风控） |
+| 策略 | 突破回踩（分钟级） | T+0动量强势策略（日频+分钟风控） |
 | 实测表现 | 无盈利（已确认） | 回测年化 +90% |
 | 状态 | 已备份为 `legacy_*.bak`，不再推荐 | ⭐ 主用 |
 | 启动脚本 | `run_monitor_windows.bat` | `run_rotation_monitor.bat` |

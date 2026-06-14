@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""日线回测引擎 —— 七星高照 ETF 轮动
+"""日线回测引擎 —— T+0动量强势策略
 
 执行流程（对应聚宽调度）：
   每个交易日（收盘前评估，收盘价成交）：
@@ -25,7 +25,7 @@ from typing import Optional
 import numpy as np
 import pandas as pd
 
-from .strategy_qixing import (
+from .strategy_momentum import (
     StrategyState,
     check_profit_protection,
     score_etf,

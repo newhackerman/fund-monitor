@@ -6,7 +6,7 @@ set PYTHONIOENCODING=utf-8
 set PYTHONLEGACYWINDOWSSTDIO=0
 chcp 65001 >nul
 
-REM ETF 轮动 + 风控监控器启动脚本（聚宽七星高照策略）
+REM ETF 轮动 + 风控监控器启动脚本（T+0动量强势策略）
 REM 用法：
 REM   run_rotation_monitor.bat            后台启动（推荐，常驻）
 REM   run_rotation_monitor.bat status     查看状态和当前持仓

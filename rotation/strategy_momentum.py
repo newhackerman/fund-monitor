@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""七星高照 ETF 轮动策略 —— 日线版（忠实移植自聚宽）
+"""T+0动量强势策略 —— 日线版（忠实移植自聚宽）
 
 移植来源（聚宽）：
 - https://www.joinquant.com/post/72393  在水一方ly

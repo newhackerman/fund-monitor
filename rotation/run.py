@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""七星高照 ETF 轮动策略 —— 回测入口
+"""T+0动量强势策略 —— 回测入口
 
 用法：
     python -m rotation.run                      # 用 config/rotation.yaml 默认
@@ -41,7 +41,7 @@ def load_config() -> dict:
 
 
 def main():
-    parser = argparse.ArgumentParser(description='七星高照 ETF 轮动回测')
+    parser = argparse.ArgumentParser(description='T+0动量强势策略回测')
     parser.add_argument('--refresh', action='store_true', help='强制重新拉取日线数据')
     parser.add_argument('--start', default=None, help='回测起点 YYYY-MM-DD')
     parser.add_argument('--end', default=None, help='回测终点 YYYY-MM-DD')
@@ -94,7 +94,7 @@ def main():
     # ---------- 3. 输出 ----------
     metrics = result.metrics
     print('\n' + '=' * 60)
-    print('七星高照 ETF 轮动 —— 回测结果')
+    print('T+0动量强势策略 —— 回测结果')
     print('=' * 60)
     print(f"回测区间:    {metrics['start_date']} ~ {metrics['end_date']} ({metrics['n_trade_days']} 交易日)")
     print(f"初始资金:    {metrics['initial_capital']:,.0f}")
@@ -256,7 +256,7 @@ def _split_verdict(sp: dict) -> str:
 def _write_markdown_report(report: dict, result) -> None:
     m = report['metrics']
     lines = [
-        '# 七星高照 ETF 轮动策略 —— 回测报告',
+        '# T+0动量强势策略 —— 回测报告',
         '',
         f'**策略来源**：{report["strategy"]["source"]}',
         f'**回测区间**：{m["start_date"]} ~ {m["end_date"]}（{m["n_trade_days"]} 交易日）',

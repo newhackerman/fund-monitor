@@ -1,10 +1,10 @@
-# 七星高照 ETF 轮动策略参数（移植自聚宽 king088 / 晨曦量化 / 在水一方ly）
+# T+0动量强势策略参数（动量轮动逻辑参考聚宽 king088 / 晨曦量化 / 在水一方ly）
 # 候选池：用户 35 个 T+0 标的 + 聚宽原池 T+0 标的，合并去重到 27 个（每类保留 1 个）。
 # 全部为 T+0（跨境/商品/债券/货币 ETF），当日回转交易。
 
 strategy:
-  name: "qixing_rotation"
-  source: "joinquant:72393/70329/69163"
+  name: "t0_momentum"
+  source: "joinquant:72393/70329/69163"   # 动量轮动逻辑参考来源
   candidate_pool_source: "user_watchlist_35 + joinquant_T0, deduped to 27"
 
 # 候选池（27 只，全部 T+0）

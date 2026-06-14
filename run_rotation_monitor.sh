@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ETF 轮动 + 风控监控器启动脚本（Linux/macOS，聚宽七星高照策略）
+# ETF 轮动 + 风控监控器启动脚本（Linux/macOS，T+0动量强势策略）
 #
 # 用法：
 #   ./run_rotation_monitor.sh               后台启动（推荐，常驻）

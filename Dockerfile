@@ -22,7 +22,7 @@ COPY . /app
 
 RUN mkdir -p /app/data /app/logs /app/config /app/tools/webui
 
-# 启动 ETF 轮动 + 风控监控器（聚宽七星高照策略移植版）
+# 启动 ETF 轮动 + 风控监控器（T+0动量强势策略）
 # - 日频轮动：每个交易日 13:10 自动选股
 # - 分钟风控：交易时段每 30 秒检查硬止损/止盈保护
 # - 信号推送到企业微信（config/rotation.yaml 配置）

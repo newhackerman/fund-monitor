@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""每日 ETF 轮动信号监控器（聚宽七星高照策略 - 信号版）
+"""每日 ETF 轮动信号监控器（T+0动量强势策略 - 信号版）
 
 职责：
   - 常驻运行，每个交易日 13:10（贴聚宽原策略时点）触发一次评估
@@ -12,7 +12,7 @@
 注意：
   - 这是【信号监控器】，只推送买卖建议，不连接券商、不实际下单
   - 与 tools/monitor.py（分钟级 T+0 日内监控）完全独立，可并存
-  - 与 rotation/run.py（离线回测）共享策略核心 rotation/strategy_qixing.py
+  - 与 rotation/run.py（离线回测）共享策略核心 rotation/strategy_momentum.py
 
 用法：
   python tools/daily_rotation_monitor.py start       # 前台运行
@@ -65,7 +65,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BASE_DIR))
 
 from rotation import daily_data
-from rotation.strategy_qixing import (
+from rotation.strategy_momentum import (
     StrategyState, score_etf, check_profit_protection,
     update_range_bound_state, check_realtime_risk_control,
 )
