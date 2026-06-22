@@ -1,0 +1,23 @@
+{
+  "holdings": [
+    {
+      "code": "513000",
+      "shares": "target",
+      "buy_price": 2.455,
+      "max_price": 2.455,
+      "buy_date": "2026-06-16",
+      "buy_idx": 640
+    }
+  ],
+  "last_trigger_date": "2026-06-22",
+  "strategy_state": {
+    "current_filter": "正常期",
+    "risk_state": "正常期",
+    "previous_rsi": null,
+    "previous_drawdown": null,
+    "stable_days": 0,
+    "last_switch_date": null,
+    "range_bound_start_date": null,
+    "range_bound_days_count": 0
+  }
+}

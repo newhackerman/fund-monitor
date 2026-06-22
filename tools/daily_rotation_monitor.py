@@ -119,6 +119,52 @@ def save_state(state: dict) -> None:
         json.dump(state, f, ensure_ascii=False, indent=2)
 
 
+# 缓存：ETF 代码 → 名称 映射（从 config YAML 注释提取）
+_etf_name_map: dict | None = None
+
+
+def _build_etf_name_map() -> dict:
+    """从 config/rotation.yaml 的 etf_pool 注释中提取 代码→名称 映射。
+    例：'513500'   # 标普500ETF博时  →  {"513500": "标普500ETF博时"}
+    """
+    global _etf_name_map
+    if _etf_name_map is not None:
+        return _etf_name_map
+    import re
+    _etf_name_map = {}
+    try:
+        with open(CONFIG_PATH, 'r', encoding='utf-8') as f:
+            in_pool = False
+            for line in f:
+                if 'etf_pool:' in line and not line.strip().startswith('#'):
+                    in_pool = True
+                    continue
+                if in_pool:
+                    # 遇到下一个顶级 key（无缩进）则退出
+                    if line and line[0] not in (' ', '\t', '-', '#', '\n', '\r'):
+                        break
+                    # 匹配: - '513500'   # 标普500ETF博时        (美股宽基)
+                    m = re.match(r"\s*-\s*'?(\d{6})'?\s*#\s*(.+?)(?:\s*\(|$)", line)
+                    if m:
+                        code = m.group(1)
+                        name = m.group(2).strip()
+                        _etf_name_map[code] = name
+    except Exception:
+        pass
+    return _etf_name_map
+
+
+def _holding_display(holdings: list) -> str:
+    """生成持仓展示字符串，如：'513500(标普500ETF博时)'"""
+    name_map = _build_etf_name_map()
+    parts = []
+    for h in holdings:
+        code = h.get('code', '?')
+        name = name_map.get(code, code)
+        parts.append(f'{code}({name})')
+    return ', '.join(parts) if parts else '(空仓)'
+
+
 def _default_strategy_state() -> dict:
     return {
         'current_filter': '正常期',
@@ -521,7 +567,7 @@ def run_loop() -> None:
                 if now_ts - last_idle_log >= 300:
                     reason = '周末/节假日' if not _is_weekday() else '非交易时段'
                     holdings = load_state().get('holdings', [])
-                    logger.info(f'[待机] {reason} {now} | 持仓 {len(holdings)} 只 | 进程持续运行中')
+                    logger.info(f'[待机] {reason} {now} | 持仓 {_holding_display(holdings)} | 进程持续运行中')
                     last_idle_log = now_ts
                 write_heartbeat('idle', {'phase': 'non_market_hours'})
                 time.sleep(60)
@@ -540,7 +586,7 @@ def run_loop() -> None:
                         logger.info(f'⚡ 风控触发 {len(risk_signals)} 条信号')
                     elif now_ts - last_monitor_log >= 300:
                         # 每 5 分钟输出一次"风控正常"心跳
-                        logger.info(f'[风控] {now} 持仓 {len(holdings)} 只，价格正常')
+                        logger.info(f'[风控] {now} 持仓 {_holding_display(holdings)}，价格正常')
                         last_monitor_log = now_ts
                 else:
                     last_risk_check = now_ts  # 空仓也要更新，避免持仓后立即高频检查
@@ -678,7 +724,7 @@ def cmd_status() -> int:
         print(f'PID: {pid}')
     state = load_state()
     print(f'上次触发: {state.get("last_trigger_date", "无")}')
-    print(f'当前持仓: {state.get("holdings", [])}')
+    print(f'当前持仓: {_holding_display(state.get("holdings", []))}')
     if HEARTBEAT_PATH.exists():
         try:
             hb = json.loads(HEARTBEAT_PATH.read_text(encoding='utf-8'))
