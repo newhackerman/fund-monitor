@@ -70,7 +70,7 @@ from rotation.strategy_momentum import (
     update_range_bound_state, check_realtime_risk_control,
 )
 from tools.data_fetch import get_fund_realtime
-from tools.notifier import send_wechat
+from tools.notifier import send_wechat, send_with_retry
 
 CONFIG_PATH = BASE_DIR / 'config' / 'rotation.yaml'
 STATE_PATH = BASE_DIR / 'data' / 'daily_rotation_state.json'
@@ -419,40 +419,57 @@ def evaluate_and_signal(config: dict, dry_run: bool = False, as_of_date: str = N
             'range_bound_start_date': str(strategy_state.range_bound_start_date) if strategy_state.range_bound_start_date else None,
             'range_bound_days_count': strategy_state.range_bound_days_count,
         }
-        save_state(state_dict)
+        # 注意：不在此处 save_state，改为推送后再保存，避免推送失败时状态已改导致信号丢失
 
-    # ---------- 推送 ----------
+    # ---------- 推送 + 存状态 ----------
     append_signals(signals)
     if signals and not dry_run:
-        _push_signals(signals, notify_cfg, scored, today_str)
+        # 先推送，成功后再存状态（避免推送失败导致卖出通知永久丢失）
+        push_ok = _push_signals(signals, notify_cfg, scored, today_str)
+        if not push_ok:
+            logger.error(f'轮动信号推送失败（已耗尽重试），信号已记录但通知未送达: {signals}')
+
+    if not dry_run:
+        save_state(state_dict)
 
     return signals
 
 
-def _push_signals(signals: list, notify_cfg: dict, scored: list, date_str: str) -> None:
-    """推送调仓指令到企业微信。"""
+def _push_signals(signals: list, notify_cfg: dict, scored: list, date_str: str) -> bool:
+    """推送调仓指令到企业微信。返回 True=成功/无需推送，False=推送失败。"""
     wechat = notify_cfg.get('wechat', {})
     if not wechat.get('enabled'):
         logger.info('企业微信推送未启用，跳过')
-        return
+        return True
     key = wechat.get('key', '')
     if not key:
         logger.warning('企业微信 webhook key 未配置')
-        return
+        return True
 
-    lines = [f'### ETF轮动调仓信号 {date_str} 13:10', '']
+    name_map = _build_etf_name_map()
+    lines = [f'ETF轮动调仓信号 {date_str} 13:10', '']
+    prev_type = None
     for s in signals:
-        emoji = '🟢' if s['type'] == 'BUY' else '🔴'
-        profit_str = f'(浮盈{ s["profit_pct"]:+.2f}%)' if s.get('profit_pct') is not None else ''
-        lines.append(f'{emoji} **{s["type"]} {s["code"]}** @ {s["price"]} {profit_str}')
+        if prev_type is not None and s['type'] != prev_type:
+            lines.append('-' * 15)
+        prev_type = s['type']
+        direction = '买入' if s['type'] == 'BUY' else '卖出'
+        name = name_map.get(s['code'], '')
+        name_str = f'({name})' if name else ''
+        profit_str = f'(浮盈{s["profit_pct"]:+.2f}%)' if s.get('profit_pct') is not None else ''
+        lines.append(f'{direction} {s["code"]}{name_str} @ {s["price"]} {profit_str}')
         lines.append(f'   {s["reason"]}')
     lines.append('')
-    lines.append(f'> 候选池打分前3: ' +
-                 ', '.join(f'{m["code"]}({m["score"]:.2f})' for m in scored[:3]) if scored else '> 无达标标的')
+    if scored:
+        lines.append('候选池打分前3: ' +
+                      ', '.join(f'{m["code"]}({name_map.get(m["code"], "")} {m["score"]:.2f})' for m in scored[:3]))
+    else:
+        lines.append('无达标标的')
 
     content = '\n'.join(lines)
-    ok = send_wechat(key, 'ETF轮动信号', content)
-    logger.info(f'企业微信推送: {"成功" if ok else "失败"}')
+    ok = send_with_retry(send_wechat, key, 'ETF轮动信号', content)
+    logger.info(f'企业微信推送: {"成功" if ok else "失败（已耗尽重试）"}')
+    return ok
 
 
 # ============================================================
@@ -533,10 +550,16 @@ def check_realtime_risk(config: dict) -> list:
         holdings.remove(holding)
 
     if signals:
+        append_signals(signals)
+        push_ok = _push_signals(signals, notify_cfg, [], _today_str())
+        if not push_ok:
+            logger.error(f'风控信号推送失败（已耗尽重试），信号已记录但通知未送达: {signals}')
         state_dict['holdings'] = holdings
         save_state(state_dict)
-        append_signals(signals)
-        _push_signals(signals, notify_cfg, [], _today_str())
+    else:
+        # 无信号时也保存状态，持久化 max_price 更新（修复止盈保护失效问题）
+        state_dict['holdings'] = holdings
+        save_state(state_dict)
 
     return signals
 
