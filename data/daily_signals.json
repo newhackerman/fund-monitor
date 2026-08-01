@@ -1,0 +1,398 @@
+[
+  {
+    "time": "2026-06-14 11:54:43",
+    "type": "BUY",
+    "code": "511010",
+    "reason": "防御切换",
+    "price": 141.163,
+    "profit_pct": null,
+    "score": null
+  },
+  {
+    "time": "2026-06-14 11:56:24",
+    "type": "BUY",
+    "code": "161226",
+    "reason": "轮动买入(动量分:7.322)",
+    "price": 1.402,
+    "profit_pct": null,
+    "score": 7.3224
+  },
+  {
+    "time": "2026-06-14 11:56:29",
+    "type": "BUY",
+    "code": "161226",
+    "reason": "轮动买入(动量分:63.663)",
+    "price": 2.016,
+    "profit_pct": null,
+    "score": 63.6628
+  },
+  {
+    "time": "2026-06-14 11:56:33",
+    "type": "BUY",
+    "code": "161226",
+    "reason": "轮动买入(动量分:18.777)",
+    "price": 3.071,
+    "profit_pct": null,
+    "score": 18.7771
+  },
+  {
+    "time": "2026-06-14 11:56:37",
+    "type": "BUY",
+    "code": "501018",
+    "reason": "轮动买入(动量分:23.584)",
+    "price": 1.791,
+    "profit_pct": null,
+    "score": 23.5837
+  },
+  {
+    "time": "2026-06-14 11:56:41",
+    "type": "BUY",
+    "code": "159100",
+    "reason": "轮动买入(动量分:0.950)",
+    "price": 1.315,
+    "profit_pct": null,
+    "score": 0.9505
+  },
+  {
+    "time": "2026-06-14 11:56:45",
+    "type": "BUY",
+    "code": "513100",
+    "reason": "轮动买入(动量分:4.937)",
+    "price": 2.1,
+    "profit_pct": null,
+    "score": 4.9367
+  },
+  {
+    "time": "2026-06-14 11:56:50",
+    "type": "BUY",
+    "code": "511010",
+    "reason": "防御切换",
+    "price": 141.278,
+    "profit_pct": null,
+    "score": null
+  },
+  {
+    "time": "2026-06-14 12:00:21",
+    "type": "BUY",
+    "code": "511010",
+    "reason": "防御切换",
+    "price": 141.163,
+    "profit_pct": null,
+    "score": null
+  },
+  {
+    "time": "2026-06-14 12:23:16",
+    "type": "SELL",
+    "code": "513100",
+    "reason": "硬止损(-9.1%<=-5%)",
+    "price": 2.162,
+    "profit_pct": -9.09,
+    "score": null
+  },
+  {
+    "time": "2026-06-14 12:24:03",
+    "type": "SELL",
+    "code": "513100",
+    "reason": "止盈保护(从高点回撤5.7%)",
+    "price": 2.162,
+    "profit_pct": 5.26,
+    "score": null
+  },
+  {
+    "time": "2026-06-14 12:46:16",
+    "type": "BUY",
+    "code": "511010",
+    "reason": "防御切换",
+    "price": 141.163,
+    "profit_pct": null,
+    "score": null
+  },
+  {
+    "time": "2026-06-14 12:47:48",
+    "type": "BUY",
+    "code": "511010",
+    "reason": "防御切换",
+    "price": 141.163,
+    "profit_pct": null,
+    "score": null
+  },
+  {
+    "time": "2026-06-14 13:40:25",
+    "type": "BUY",
+    "code": "511010",
+    "reason": "防御切换",
+    "price": 141.163,
+    "profit_pct": null,
+    "score": null
+  },
+  {
+    "time": "2026-06-14 13:45:50",
+    "type": "BUY",
+    "code": "513100",
+    "reason": "轮动买入(动量分:4.937)",
+    "price": 2.1,
+    "profit_pct": null,
+    "score": 4.9367
+  },
+  {
+    "time": "2026-06-15 13:10:10",
+    "type": "BUY",
+    "code": "513500",
+    "reason": "轮动买入(动量分:0.161)",
+    "price": 2.569,
+    "profit_pct": null,
+    "score": 0.1606
+  },
+  {
+    "time": "2026-06-16 13:10:20",
+    "type": "SELL",
+    "code": "513500",
+    "reason": "轮动调出(动量下降)",
+    "price": 2.584,
+    "profit_pct": 0.58,
+    "score": null
+  },
+  {
+    "time": "2026-06-16 13:10:20",
+    "type": "BUY",
+    "code": "513000",
+    "reason": "轮动买入(动量分:1.828)",
+    "price": 2.455,
+    "profit_pct": null,
+    "score": 1.8284
+  },
+  {
+    "time": "2026-06-23 13:10:14",
+    "type": "SELL",
+    "code": "513000",
+    "reason": "轮动调出(动量下降)",
+    "price": 2.509,
+    "profit_pct": 2.2,
+    "score": null
+  },
+  {
+    "time": "2026-06-23 13:10:14",
+    "type": "BUY",
+    "code": "513400",
+    "reason": "轮动买入(动量分:0.248)",
+    "price": 1.283,
+    "profit_pct": null,
+    "score": 0.2485
+  },
+  {
+    "time": "2026-06-25 13:10:23",
+    "type": "SELL",
+    "code": "513400",
+    "reason": "轮动调出(动量下降)",
+    "price": 1.299,
+    "profit_pct": 1.25,
+    "score": null
+  },
+  {
+    "time": "2026-06-25 13:10:23",
+    "type": "BUY",
+    "code": "513290",
+    "reason": "轮动买入(动量分:0.219)",
+    "price": 1.547,
+    "profit_pct": null,
+    "score": 0.2186
+  },
+  {
+    "time": "2026-06-26 13:10:15",
+    "type": "SELL",
+    "code": "513290",
+    "reason": "轮动调出(动量下降)",
+    "price": 1.629,
+    "profit_pct": 5.3,
+    "score": null
+  },
+  {
+    "time": "2026-06-26 13:10:15",
+    "type": "BUY",
+    "code": "513400",
+    "reason": "轮动买入(动量分:0.176)",
+    "price": 1.296,
+    "profit_pct": null,
+    "score": 0.1765
+  },
+  {
+    "time": "2026-06-29 13:10:22",
+    "type": "SELL",
+    "code": "513400",
+    "reason": "轮动调出(动量下降)",
+    "price": 1.302,
+    "profit_pct": 0.46,
+    "score": null
+  },
+  {
+    "time": "2026-06-29 13:10:22",
+    "type": "BUY",
+    "code": "513290",
+    "reason": "轮动买入(动量分:0.783)",
+    "price": 1.659,
+    "profit_pct": null,
+    "score": 0.7835
+  },
+  {
+    "time": "2026-07-06 13:10:20",
+    "type": "SELL",
+    "code": "513290",
+    "reason": "盈利保护(回撤超5%)",
+    "price": 1.751,
+    "profit_pct": 5.55,
+    "score": null
+  },
+  {
+    "time": "2026-07-07 13:10:19",
+    "type": "BUY",
+    "code": "513400",
+    "reason": "轮动买入(动量分:0.486)",
+    "price": 1.341,
+    "profit_pct": null,
+    "score": 0.4863
+  },
+  {
+    "time": "2026-07-09 13:10:14",
+    "type": "SELL",
+    "code": "513400",
+    "reason": "轮动调出(动量下降)",
+    "price": 1.309,
+    "profit_pct": -2.39,
+    "score": null
+  },
+  {
+    "time": "2026-07-09 13:10:14",
+    "type": "BUY",
+    "code": "513290",
+    "reason": "轮动买入(动量分:11.491)",
+    "price": 1.724,
+    "profit_pct": null,
+    "score": 11.4906
+  },
+  {
+    "time": "2026-07-13 11:16:10",
+    "type": "SELL",
+    "code": "513290",
+    "reason": "硬止损(-5.0%<=-5%)",
+    "price": 1.637,
+    "profit_pct": -5.05,
+    "score": null
+  },
+  {
+    "time": "2026-07-13 13:10:19",
+    "type": "BUY",
+    "code": "159985",
+    "reason": "轮动买入(动量分:1.094)",
+    "price": 2.189,
+    "profit_pct": null,
+    "score": 1.0935
+  },
+  {
+    "time": "2026-07-17 13:08:30",
+    "type": "SELL",
+    "code": "159985",
+    "reason": "硬止损(-5.3%<=-5%)",
+    "price": 2.074,
+    "profit_pct": -5.25,
+    "score": null
+  },
+  {
+    "time": "2026-07-17 13:10:16",
+    "type": "BUY",
+    "code": "511010",
+    "reason": "防御切换",
+    "price": 140.836,
+    "profit_pct": null,
+    "score": 0.0195
+  },
+  {
+    "time": "2026-07-20 13:10:16",
+    "type": "SELL",
+    "code": "511010",
+    "reason": "轮动调出(动量下降)",
+    "price": 140.807,
+    "profit_pct": -0.02,
+    "score": null
+  },
+  {
+    "time": "2026-07-20 13:10:16",
+    "type": "BUY",
+    "code": "159920",
+    "reason": "轮动买入(动量分:0.231)",
+    "price": 1.488,
+    "profit_pct": null,
+    "score": 0.2313
+  },
+  {
+    "time": "2026-07-21 13:10:22",
+    "type": "SELL",
+    "code": "159920",
+    "reason": "轮动调出(动量下降)",
+    "price": 1.488,
+    "profit_pct": 0.0,
+    "score": null
+  },
+  {
+    "time": "2026-07-21 13:10:22",
+    "type": "BUY",
+    "code": "501018",
+    "reason": "轮动买入(动量分:2.026)",
+    "price": 1.993,
+    "profit_pct": null,
+    "score": 2.0264
+  },
+  {
+    "time": "2026-07-27 13:10:25",
+    "type": "SELL",
+    "code": "501018",
+    "reason": "轮动调出(动量下降)",
+    "price": 1.923,
+    "profit_pct": -3.51,
+    "score": null
+  },
+  {
+    "time": "2026-07-27 13:10:25",
+    "type": "BUY",
+    "code": "159985",
+    "reason": "轮动买入(动量分:2.630)",
+    "price": 2.294,
+    "profit_pct": null,
+    "score": 2.6296
+  },
+  {
+    "time": "2026-07-28 11:00:43",
+    "type": "SELL",
+    "code": "159985",
+    "reason": "硬止损(-5.1%<=-5%)",
+    "price": 2.176,
+    "profit_pct": -5.14,
+    "score": null
+  },
+  {
+    "time": "2026-07-28 13:10:20",
+    "type": "BUY",
+    "code": "513690",
+    "reason": "轮动买入(动量分:2.199)",
+    "price": 1.141,
+    "profit_pct": null,
+    "score": 2.1995
+  },
+  {
+    "time": "2026-07-31 13:10:21",
+    "type": "SELL",
+    "code": "513690",
+    "reason": "轮动调出(动量下降)",
+    "price": 1.145,
+    "profit_pct": 0.35,
+    "score": null
+  },
+  {
+    "time": "2026-07-31 13:10:21",
+    "type": "BUY",
+    "code": "501018",
+    "reason": "轮动买入(动量分:14.397)",
+    "price": 1.985,
+    "profit_pct": null,
+    "score": 14.3967
+  }
+]

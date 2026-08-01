@@ -1,0 +1,161 @@
+{
+  "strategy": {
+    "name": "t0_momentum",
+    "source": "joinquant:72393/70329/69163",
+    "candidate_pool_source": "user_watchlist_35 + joinquant_T0, deduped to 27"
+  },
+  "backtest_config": {
+    "start": "2024-01-01",
+    "end": "2026-06-12",
+    "initial_capital": 100000.0,
+    "commission_rate": 0.0001,
+    "min_commission": 5.0,
+    "slippage": 0.0001,
+    "trade_at": "close"
+  },
+  "params": {
+    "lookback_days": 25,
+    "holdings_num": 1,
+    "min_score_threshold": 0.0,
+    "max_score_threshold": 100.0,
+    "t_plus_zero": true,
+    "enable_profit_protection": true,
+    "profit_protection_mode": "since_buy",
+    "profit_protection_lookback": 1,
+    "profit_protection_threshold": 0.05,
+    "realtime_risk_control": {
+      "enabled": true,
+      "stop_loss_pct": -0.05,
+      "profit_protect_activate_pct": 0.02,
+      "profit_protect_drawdown_pct": 0.05
+    },
+    "loss_ratio": 0.97,
+    "enable_volume_check": true,
+    "volume_lookback": 5,
+    "volume_threshold": 2,
+    "volume_return_limit": 1.0,
+    "use_short_momentum_filter": true,
+    "short_lookback_days": 10,
+    "short_momentum_threshold": 0.0,
+    "enable_premium_filter": false,
+    "premium_threshold": 0.2,
+    "enable_range_bound_mode": true,
+    "lookback_high_low_days": 20,
+    "laplace_s_param": 0.05,
+    "laplace_min_slope": 0.001,
+    "gaussian_sigma": 1.2,
+    "gaussian_min_slope": 0.002,
+    "enable_bias_trigger": true,
+    "bias_threshold": 0.1,
+    "ma_period": 20,
+    "enable_rsi_trigger": true,
+    "rsi_overbought": 75,
+    "rsi_pullback": 60,
+    "enable_low_point_rise_trigger": true,
+    "low_point_rise_threshold": 0.03,
+    "enable_stable_signal_trigger": true,
+    "drawdown_recovery": 0.03,
+    "max_range_bound_days": 15,
+    "filter_switch_cooldown": 2
+  },
+  "metrics": {
+    "start_date": "2024-01-02",
+    "end_date": "2026-06-12",
+    "n_trade_days": 590,
+    "initial_capital": 100000.0,
+    "final_equity": 478685.2,
+    "total_return_pct": 378.69,
+    "annual_return_pct": 89.79,
+    "max_drawdown_pct": -21.38,
+    "sharpe": 1.985,
+    "calmar": 4.2,
+    "n_trades": 385,
+    "n_sells": 192,
+    "n_buys": 193,
+    "win_rate_pct": 53.65,
+    "avg_win_pct": 3.66,
+    "avg_loss_pct": -2.21,
+    "profit_factor": 1.81,
+    "turnover_per_day": 0.327,
+    "benchmark_return_pct": 78.68,
+    "excess_return_pct": 300.01
+  },
+  "baselines": {
+    "equal_weight_pool_total_pct": 49.62,
+    "equal_weight_pool_annual_pct": 17.92,
+    "pool_mean_total_pct": 48.08,
+    "pool_median_total_pct": 26.47,
+    "top3_codes": [
+      [
+        "513310",
+        359.45
+      ],
+      [
+        "161226",
+        149.02
+      ],
+      [
+        "518880",
+        85.58
+      ]
+    ],
+    "benchmark_total_pct": 78.68,
+    "pool_size": 27
+  },
+  "splits": {
+    "in_sample": {
+      "start": "2024-01-02",
+      "end": "2025-03-21",
+      "n_days": 293,
+      "total_return_pct": 47.03,
+      "annual_return_pct": 37.29,
+      "max_drawdown_pct": -18.47,
+      "sharpe": 1.184,
+      "win_rate_pct": 48.86
+    },
+    "out_of_sample": {
+      "start": "2025-03-24",
+      "end": "2026-06-12",
+      "n_days": 297,
+      "total_return_pct": 224.88,
+      "annual_return_pct": 162.86,
+      "max_drawdown_pct": -21.38,
+      "sharpe": 2.637,
+      "win_rate_pct": 58.65
+    }
+  },
+  "n_pool_used": 27,
+  "pool_missing": [],
+  "range_bound_switches": [
+    {
+      "date": "2024-07-12 00:00:00",
+      "from": "正常期",
+      "to": "震荡期"
+    },
+    {
+      "date": "2024-07-15 00:00:00",
+      "from": "震荡期",
+      "to": "正常期"
+    },
+    {
+      "date": "2025-05-30 00:00:00",
+      "from": "正常期",
+      "to": "震荡期"
+    },
+    {
+      "date": "2025-06-03 00:00:00",
+      "from": "震荡期",
+      "to": "正常期"
+    },
+    {
+      "date": "2026-06-01 00:00:00",
+      "from": "正常期",
+      "to": "震荡期"
+    },
+    {
+      "date": "2026-06-03 00:00:00",
+      "from": "震荡期",
+      "to": "正常期"
+    }
+  ]
+}

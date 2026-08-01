@@ -126,4 +126,4 @@ backtest:
 notify:
   wechat:
     enabled: true
-    key: 'bc6ae562-f951-4650-8475-3384fbb29bdc'   # 企业微信 webhook key
+    key: 'aa45fedd-10a4-4dc7-9698-ccd2a2b2cea3'   # 企业微信 webhook key

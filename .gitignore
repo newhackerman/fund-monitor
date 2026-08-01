@@ -1,38 +1,11 @@
-# Runtime data (generated at runtime, not part of the skill)
-data/minute_cache/
-data/minute_cache_quality/
-data/monitor.pid
-data/monitor_keepalive.pid
-data/monitor_heartbeat.json
-data/signals.json
-data/trades.json
-data/stats_snapshot.json
-
-# 新监控器（轮动+风控）运行时产物
-data/daily_cache/
-data/daily_rotation_monitor.pid
-data/daily_rotation_monitor_heartbeat.json
-data/daily_signals.json
-data/exploration_history.json
-
-# 回测输出（可由 python -m rotation.run 重新生成，不入库）
-data/rotation_backtest_report.json
-data/rotation_equity_curve.csv
-data/rotation_trades.csv
-
-# Logs (runtime output)
-logs/
-
-# Python virtual environment
-venv/
+# Python bytecode & cache
 __pycache__/
 *.pyc
+venv/
 
-# Temporary files
+# OS temp files
 *.swp
 *.swo
 .DS_Store
-AUTO_EXPLORATION_RUNNING
-
-# Windows temp
 *.tmp
+AUTO_EXPLORATION_RUNNING
